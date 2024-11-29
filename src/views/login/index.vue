@@ -6,7 +6,6 @@ import AuthAPI from '@/api/auth'
 import { onBeforeMount } from 'vue'
 
 onBeforeMount(() => {
-    console.log('aaaaaaaaaaaa')
     AuthAPI.login({
         username: 'wangbo',
         password: '123'
