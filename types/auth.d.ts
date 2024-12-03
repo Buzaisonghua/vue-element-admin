@@ -5,4 +5,12 @@ declare namespace Auth {
         /** 密码 */
         password: string;
     }
+    interface AutoLoginRes {
+        accessToken: String
+    }
+
+    interface UserInfo {
+        name: string,
+        age: number
+    }
 }

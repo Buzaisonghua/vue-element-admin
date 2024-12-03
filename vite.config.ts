@@ -26,7 +26,13 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: +port,
-    open: true
+    open: true,
+    proxy: {
+      // 代理 /dev-api 的请求
+      '/api': {
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [
     vue(),

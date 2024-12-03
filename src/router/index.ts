@@ -11,7 +11,8 @@ export const constantRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/',
-    component: () => Layout
+    component: Layout,
+    name: 'Layout'
   }
 ];
 
