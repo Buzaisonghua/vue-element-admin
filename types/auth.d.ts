@@ -8,7 +8,7 @@
  */
 declare namespace Auth {
     interface LoginData {
-        /** 用户名2221ab */
+        /** 用户名2221abc */
         username: string;
         /** 密码1111zzz */
         password: string;
