@@ -30,7 +30,7 @@ router.beforeEach(async (to, from, next) => {
             next({ path: "/" });
         } else {
             const userStore = useUserStore()
-            const userInfo = await userStore.getUserInfo()
+            await userStore.getUserInfo()
             // 判断路由是否加载完成
             next()
       }

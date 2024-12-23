@@ -64,4 +64,30 @@ export default defineMock([
       }
     }
   },
+  {
+    url: "/api/getUserRoutes",
+    method: ["POST"],
+    body: ({ body }) => {
+      const { userId } = body
+      if (userId === 1) {
+        return {code: "200", data: { 
+          routesList: ['root', 'admin', 'test']
+        }}
+      }
+      if (userId === 2) {
+        return {code: "200", data: { 
+          routesList: ['admin', 'test']
+        }}
+      }
+      if (userId === 3) {
+        return {code: "200", data: {
+          routesList: ['test']
+        }}
+      }
+      return {
+        code: 50002,
+        msg: '用户信息不存在'
+      }
+    },
+  },
 ]);

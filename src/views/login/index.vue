@@ -97,7 +97,7 @@
   </template>
   
 <script setup lang="ts">
-import AuthAPI from '@/api/auth';
+import {login} from '@/api/auth';
 import {setToken} from '@/utils/auth'
 import router from "@/router";
 import { ref, computed } from 'vue'
@@ -136,7 +136,7 @@ import { ref, computed } from 'vue'
   
   // 登录
   async function handleLoginSubmit() {
-    AuthAPI.login({
+    login({
         username: loginData.value.username,
         password: loginData.value.password
     }).then((res) => {

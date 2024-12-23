@@ -1,26 +1,22 @@
 import request from "@/utils/request";
+import {AUTH_BASE_URL} from './index'
 
-const AUTH_BASE_URL = "/api";
+/** 登录接口*/
+export const login = (data: Auth.LoginData): Promise<{
+  accessToken: string
+}> => {
+  return request({
+    url: `${AUTH_BASE_URL}/login`,
+    method: "post",
+    data
+  });
+}
 
-const AuthAPI = {
-  /** 登录接口*/
-  login(data: Auth.LoginData) {
-    console.log(data)
-    return request({
-      url: `${AUTH_BASE_URL}/login`,
-      method: "post",
-      data
-    });
-  },
-
-  // 获取用户信息
-  getInfo(token: string) {
-    return request({
-      url: `${AUTH_BASE_URL}/getUserInfo`,
-      method: "post",
-      data: {token: token}
-    });
-  }
-};
-
-export default AuthAPI;
+// 获取用户信息
+export const getInfo = (token: string):Promise<Auth.UserInfo> => {
+  return request({
+    url: `${AUTH_BASE_URL}/getUserInfo`,
+    method: "post",
+    data: {token: token}
+  });
+}

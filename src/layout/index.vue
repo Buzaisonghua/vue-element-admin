@@ -1,12 +1,36 @@
 <template>
     <main class="layout-box">
-        <nav class="layout-nav"></nav>
-        <center class="layout-center">
+        <nav class="layout-nav">
+            <div @click="goTo('/dashboard')">dashboard</div>
+        </nav>
+        <section class="layout-center">
             <header class="layout-header"></header>
             <div class="center-box"></div>
-        </center>
+        </section>
     </main>
 </template>
+<script setup lang="ts">
+import { onBeforeMount } from 'vue';
+import useRoutesStore from '@/store/modules/routes';
+import useUserStore from '@/store/modules/user'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+onBeforeMount(() => {
+    initRoute()
+})
+const goTo = (path: string) => {
+    router.push(path)
+}
+/**
+ * 根据登录人初始化路由信息
+ */
+const initRoute = () => {
+    const useRoutes = useRoutesStore()
+    useRoutes.setRoutes(useUserStore().getUserId)
+}
+</script>
 <style lang="scss" scoped>
 .layout-box {
     height: 100%;
@@ -14,7 +38,7 @@
     .layout-nav {
         height: 100%;
         width: 200px;
-        background: #000;
+        // background: #000;
     }
     .layout-center {
         position: absolute;
