@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from "path"
-
+import { URL, fileURLToPath } from 'node:url'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-
 import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'path'
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -19,9 +19,10 @@ const port = process.env.port || process.env.npm_config_port || 9527 // dev port
 export default defineConfig({
   resolve: {
     alias: {
-      /** @ 符号指向 src 目录 */
-      "@": resolve(__dirname, "./src")
-    }
+      '~': fileURLToPath(new URL('./', import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
+    },
   },
   server: {
     host: "0.0.0.0",
@@ -38,6 +39,12 @@ export default defineConfig({
     vue(),
 
     mockDevServerPlugin(),
+
+    createSvgIconsPlugin({
+      customDomId: "svg_icons_",
+      inject: "body-last",
+      iconDirs: [path.resolve(process.cwd(), "src/icons/svg")]
+    }),
 
     // 自动导入配置 https://github.com/sxzz/element-plus-best-practices/blob/main/vite.config.ts
     AutoImport({

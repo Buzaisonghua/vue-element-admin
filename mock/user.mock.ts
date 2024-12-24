@@ -71,17 +71,17 @@ export default defineMock([
       const { userId } = body
       if (userId === 1) {
         return {code: "200", data: { 
-          routesList: ['root', 'admin', 'test']
+          routesList: ['Root', 'Admin', 'Test']
         }}
       }
       if (userId === 2) {
         return {code: "200", data: { 
-          routesList: ['admin', 'test']
+          routesList: ['Admin', 'Test']
         }}
       }
       if (userId === 3) {
         return {code: "200", data: {
-          routesList: ['test']
+          routesList: ['Test']
         }}
       }
       return {
@@ -91,3 +91,4 @@ export default defineMock([
     },
   },
 ]);
+
