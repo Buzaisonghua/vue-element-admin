@@ -1,7 +1,6 @@
 <template>
-  <div class="hamburger-box" @click="toggleClick">
+  <div class="hamburger" :class="{ 'is-active': !sidebar }" @click="toggleClick">
     <svg-icon icon-class="indent" />
-    {{ sidebar }}
   </div>
 </template>
 
@@ -10,11 +9,14 @@ import { defineProps } from 'vue'
 defineProps({
   sidebar: { type: Boolean },
 })
-const toggleClick = () => {}
+const emit = defineEmits<{
+  toggleClick: []
+}>()
+const toggleClick = () => emit('toggleClick')
 </script>
 
 <style scoped lang="scss">
-.hamburger-box {
+.hamburger {
   width: 50px;
   height: 100%;
   display: flex;

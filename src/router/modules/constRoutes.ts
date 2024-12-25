@@ -1,12 +1,13 @@
-import { routerInterface } from "types/router"
+import { RouterInterface } from 'types/router'
 
-export const Layout = () => import("@/layout/index.vue");
+export const Layout = () => import('@/layout/index.vue')
 
 // 静态路由
-export const constantRoutes: routerInterface.RouteRecord[] = [
+export const constantRoutes: RouterInterface.RouteRecord[] = [
   {
-    path: "/login",
-    component: () => import("@/views/login/index.vue"),
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/index.vue'),
     meta: { hidden: true },
   },
   {
@@ -19,37 +20,60 @@ export const constantRoutes: routerInterface.RouteRecord[] = [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: () => import("@/views/dashboard/index.vue")
+        component: () => import('@/views/dashboard/index.vue'),
+        meta: {
+          title: 'Dashboard',
+          icon: 'smile-fill',
+        },
       },
       {
         path: 'charts',
         name: 'Charts',
-        component: () => import("@/views/charts/index.vue")
+        component: () => import('@/views/charts/index.vue'),
+        meta: {
+          title: 'Charts',
+          icon: 'chart-area',
+        },
       },
       {
         path: 'authority',
+        name: 'Authority',
         redirect: '/authority/test',
-        component: () => import('@/views/authority/main.vue'),
+        component: () => import('@/views/authority/index.vue'),
+        meta: {
+          title: 'Authority',
+          icon: 'gem',
+        },
         children: [
-            {
-                path: 'test',
-                name: 'Test',
-                component: () => import('@/views/authority/test/index.vue'),
+          {
+            path: 'test',
+            name: 'Test',
+            component: () => import('@/views/authority/test/index.vue'),
+            meta: {
+              title: 'Test',
+              icon: 'user-fill',
             },
-            {
-                path: 'admin',
-                name: 'Admin',
-                component: () => import('@/views/authority/admin/index.vue'),
-                needAuth: true
+          },
+          {
+            path: 'admin',
+            name: 'Admin',
+            component: () => import('@/views/authority/admin/index.vue'),
+            needAuth: true,
+            meta: {
+              title: 'Admin',
             },
-            {
-                path: 'root',
-                name: 'Root',
-                component: () => import('@/views/authority/root/index.vue'),
-                needAuth: true
-            }
-        ]
-    }
-    ]
-  }
-];
+          },
+          {
+            path: 'root',
+            name: 'Root',
+            component: () => import('@/views/authority/root/index.vue'),
+            needAuth: true,
+            meta: {
+              title: 'Root',
+            },
+          },
+        ],
+      },
+    ],
+  },
+]

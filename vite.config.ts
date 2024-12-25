@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
 import path from 'path'
 
 // If your port is set to 80,
@@ -25,7 +26,7 @@ export default defineConfig({
     },
   },
   server: {
-    host: "0.0.0.0",
+    host: '0.0.0.0',
     port: +port,
     open: true,
     proxy: {
@@ -41,28 +42,39 @@ export default defineConfig({
     mockDevServerPlugin(),
 
     createSvgIconsPlugin({
-      customDomId: "svg_icons_",
-      inject: "body-last",
-      iconDirs: [path.resolve(process.cwd(), "src/icons/svg")]
+      customDomId: 'svg_icons_',
+      inject: 'body-last',
+      iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')],
     }),
-
     // 自动导入配置 https://github.com/sxzz/element-plus-best-practices/blob/main/vite.config.ts
     AutoImport({
-      // 导入 Vue 函数，如：ref, reactive, toRef 等
-      imports: [],
+      imports: [
+        'vue',
+        'vue-router',
+        'vue-i18n',
+        'pinia',
+        '@vueuse/head',
+        '@vueuse/core',
+        {
+          'driver.js': [
+            'driver', // import { useMouse } from '@vueuse/core',
+          ],
+        },
+      ],
+      vueTemplate: true,
       resolvers: [
         // 导入 Element Plus函数，如：ElMessage, ElMessageBox 等
         ElementPlusResolver(),
+        VueHooksPlusResolver(),
       ],
       eslintrc: {
         enabled: false,
-        filepath: "./.eslintrc-auto-import.json",
+        filepath: './.eslintrc-auto-import.json',
         globalsPropValue: true,
       },
-      vueTemplate: true,
       // 导入函数类型声明文件路径 (false:关闭自动生成)
       // dts: false,
-      dts: "types/auto-imports.d.ts",
+      dts: 'types/auto-imports.d.ts',
     }),
     Components({
       resolvers: [
@@ -70,9 +82,9 @@ export default defineConfig({
         ElementPlusResolver(),
       ],
       // 指定自定义组件位置(默认:src/components)
-      dirs: ["src/components", "src/**/components"],
+      dirs: ['src/components', 'src/**/components'],
       // 导入组件类型声明文件路径 (false:关闭自动生成)
-      dts: "types/components.d.ts",
+      dts: 'types/components.d.ts',
     }),
   ],
 })

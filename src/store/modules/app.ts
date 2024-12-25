@@ -1,24 +1,35 @@
-import Cookies from 'js-cookie'
+import { getStorage, setStorage } from '@/utils/storage'
 import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    sidebarOpened: Cookies.get('sidebarOpened')
-      ? (!!+Cookies.get('sidebarOpened') as unknown as string)
-      : false,
+    sidebarOpened: !!+getStorage('SIDEBAR'),
+    device: 'desktop', // desktop | mobile
+    withMobileClickSidebar: false,
   }),
   getters: {
     getSidebarOpened: (state) => state.sidebarOpened,
+    getDevice: (state) => state.device,
+    getWithMobileClickSidebar: (state) => state.withMobileClickSidebar,
   },
   actions: {
-    /** 设置用户id */
-    setUserId() {
-      this.sidebarOpened = !this.sidebarOpened
-      if (this.sidebarOpened) {
-        Cookies.set('sidebarOpened', '1')
-      } else {
-        Cookies.set('sidebarOpened', '0')
+    setSidebarOpened(close?: boolean) {
+      if (close) {
+        this.sidebarOpened = false
+        setStorage('SIDEBAR', '0')
+        return
       }
+      this.sidebarOpened = !this.sidebarOpened
+      setStorage('SIDEBAR', this.sidebarOpened ? '1' : '0')
+      if (this.device === 'mobile' && !this.withMobileClickSidebar) {
+        this.setWithMobileClickSidebar()
+      }
+    },
+    setDevice(device: string) {
+      this.device = device
+    },
+    setWithMobileClickSidebar() {
+      this.withMobileClickSidebar = true
     },
   },
 })
