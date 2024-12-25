@@ -1,7 +1,7 @@
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper">
     <el-menu
-      default-active="viewsRoute.name"
+      :default-active="active as string"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
       :collapse-transition="false"
@@ -16,14 +16,15 @@
 <script lang="ts" setup>
 import { useAppStore } from '@/store/modules/app'
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
 import SidebarItem from './SidebarItem.vue'
 const appStore = useAppStore()
 const isCollapse = computed(() =>
   appStore.getDevice === 'mobile' ? false : appStore.getSidebarOpened
 )
-const route = useRouter()
-const viewsRoute = route.getRoutes().find((val) => val.path === '/')
+const route = useRoute()
+const active = computed(() => route.name)
+const router = useRouter()
+const viewsRoute = router.getRoutes().find((val) => val.path === '/')
 </script>
 
 <style>
