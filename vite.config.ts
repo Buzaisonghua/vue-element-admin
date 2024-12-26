@@ -7,7 +7,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import mockDevServerPlugin from 'vite-plugin-mock-dev-server'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
-import ElementPlus from 'unplugin-element-plus/vite'
 
 import path from 'path'
 
@@ -54,13 +53,6 @@ export default defineConfig({
       customDomId: 'svg_icons_',
       inject: 'body-last',
       iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')],
-    }),
-
-    ElementPlus({
-      useSource: true, // 是否使用源代码，默认为 true
-      useStyle: true, // 是否按需引入样式，默认为 true
-      defaultLocale: 'en', // 设置默认语言
-      lib: 'es', // 配置使用 Element Plus 的 ESM 版本或 CJS 版本
     }),
 
     // 自动导入配置 https://github.com/sxzz/element-plus-best-practices/blob/main/vite.config.ts
