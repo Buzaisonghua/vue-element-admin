@@ -1,5 +1,5 @@
 <template>
-  <div class="hamburger" :class="{ 'is-active': !sidebar }" @click="toggleClick">
+  <div class="hamburger" :class="{ 'is-active': sidebar }" @click="toggleClick">
     <svg-icon icon-class="indent" />
   </div>
 </template>

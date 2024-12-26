@@ -1,10 +1,11 @@
 // 检查用户的操作系统是否使用深色模式
 const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)')
 
-const defaultSettings: global.AppSettings = {
+const defaultSettings: Global.AppSettings = {
   title: 'BZSH',
   language: 'ZH_CN',
-  themeColor: 'red',
+  themeColor: '#6959CD',
+  sidebarMoblie: 942,
 }
 
 export default defaultSettings

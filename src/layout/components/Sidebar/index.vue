@@ -3,7 +3,7 @@
     <el-menu
       :default-active="active as string"
       class="el-menu-vertical-demo"
-      :collapse="isCollapse"
+      :collapse="!isCollapse"
       :collapse-transition="false"
     >
       <template v-for="item in viewsRoute?.children" :key="item.path">
@@ -19,7 +19,7 @@ import { computed } from 'vue'
 import SidebarItem from './SidebarItem.vue'
 const appStore = useAppStore()
 const isCollapse = computed(() =>
-  appStore.getDevice === 'mobile' ? false : appStore.getSidebarOpened
+  appStore.getDevice === 'mobile' ? true : appStore.getSidebarOpened
 )
 const route = useRoute()
 const active = computed(() => route.name)

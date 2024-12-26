@@ -3,14 +3,16 @@ import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
+    // 当前导航栏状态， true为收缩，false为展开
     sidebarOpened: !!+getStorage('SIDEBAR'),
+    // 当前的页面状态
     device: 'desktop', // desktop | mobile
-    withMobileClickSidebar: false,
+    withoutAnimation: true,
   }),
   getters: {
     getSidebarOpened: (state) => state.sidebarOpened,
     getDevice: (state) => state.device,
-    getWithMobileClickSidebar: (state) => state.withMobileClickSidebar,
+    getWithoutAnimation: (state) => state.withoutAnimation,
   },
   actions: {
     setSidebarOpened(close?: boolean) {
@@ -19,17 +21,15 @@ export const useAppStore = defineStore('app', {
         setStorage('SIDEBAR', '0')
         return
       }
+      this.setWithoutAnimation()
       this.sidebarOpened = !this.sidebarOpened
       setStorage('SIDEBAR', this.sidebarOpened ? '1' : '0')
-      if (this.device === 'mobile' && !this.withMobileClickSidebar) {
-        this.setWithMobileClickSidebar()
-      }
     },
     setDevice(device: string) {
       this.device = device
     },
-    setWithMobileClickSidebar() {
-      this.withMobileClickSidebar = true
+    setWithoutAnimation(boolean?: boolean) {
+      this.withoutAnimation = !!boolean
     },
   },
 })

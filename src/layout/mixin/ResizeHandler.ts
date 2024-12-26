@@ -1,8 +1,9 @@
 import { useAppStore } from '@/store/modules/app'
+import defaultSettings from '@/settins'
 const appStore = useAppStore()
 
 const { body } = document
-const WIDTH = 392 // refer to Bootstrap's responsive design
+const WIDTH = defaultSettings.sidebarMoblie // refer to Bootstrap's responsive design
 
 export default {
   watch: {
@@ -33,6 +34,7 @@ export default {
       if (!document.hidden) {
         const isMobile = this.$_isMobile()
         appStore.setDevice(isMobile ? 'mobile' : 'desktop')
+        appStore.setWithoutAnimation(true)
         if (isMobile) {
           appStore.setSidebarOpened(true)
         }

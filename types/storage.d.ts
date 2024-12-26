@@ -1,3 +1,3 @@
 declare namespace Storage {
-  type StorageKey = 'USERINFO' | 'SIDEBAR'
+  type StorageKey = 'USERINFO' | 'SIDEBAR' | 'THEMECOLOR'
 }
