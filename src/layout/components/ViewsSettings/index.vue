@@ -5,6 +5,7 @@
 
       <div class="drawer-item">
         <span style="padding-right: 12px">Theme Color</span>
+        {{ themeColor }}
         <theme-picker :color="themeColor" @updateColor="updateColor" />
       </div>
     </div>
@@ -17,9 +18,9 @@ import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
 
 const themeColor = computed(() => settingsStore.getThemeColor)
-// onBeforeMount(() => {
-//   updateColor(themeColor.value)
-// })
+onBeforeMount(() => {
+  updateColor(themeColor.value)
+})
 const updateColor = (color: string) => {
   settingsStore.setThemeColor(color)
 }

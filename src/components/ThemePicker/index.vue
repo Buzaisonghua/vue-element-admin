@@ -26,16 +26,9 @@ const colors = [
   '#6959CD',
   '#f5222d',
 ]
-
-watch(
-  theme,
-  (newValue) => {
-    emit('updateColor', newValue)
-  },
-  {
-    immediate: true,
-  }
-)
+watch(theme, (newValue) => {
+  emit('updateColor', newValue)
+})
 </script>
 
 <style>

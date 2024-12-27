@@ -13,7 +13,6 @@ export const useSettingsStore = defineStore('settings', {
   actions: {
     setThemeColor(color: string) {
       const colors = generateThemeColors(color)
-      console.log('1111', colors)
       applyTheme(colors)
     },
   },
