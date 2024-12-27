@@ -7,12 +7,10 @@
   />
 </template>
 <script lang="ts" setup>
-import { hexToRgb } from '@/utils/theme'
-
 const props = defineProps({
   color: String,
 })
-const theme = ref(`rgba(${hexToRgb(props.color || '#000000').join()})`)
+const theme = ref(props.color)
 const emit = defineEmits(['updateColor'])
 
 // 定义颜色预设
@@ -26,9 +24,15 @@ const colors = [
   '#6959CD',
   '#f5222d',
 ]
-watch(theme, (newValue) => {
-  emit('updateColor', newValue)
-})
+watch(
+  theme,
+  (newValue) => {
+    emit('updateColor', newValue)
+  },
+  {
+    immediate: true,
+  }
+)
 </script>
 
 <style>

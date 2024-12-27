@@ -18,10 +18,8 @@ import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
 
 const themeColor = computed(() => settingsStore.getThemeColor)
-onBeforeMount(() => {
-  updateColor(themeColor.value)
-})
-const updateColor = (color: string) => {
+const updateColor = (color: string = '#000000') => {
+  console.log(color)
   settingsStore.setThemeColor(color)
 }
 </script>

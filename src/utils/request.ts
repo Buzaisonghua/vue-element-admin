@@ -1,5 +1,6 @@
 import axios, { type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
 import { getToken } from './auth'
+import { ElMessage } from 'element-plus'
 
 // 创建 axios 实例
 const service = axios.create({

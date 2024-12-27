@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { URL, fileURLToPath } from 'node:url'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -9,7 +8,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
 
 import path from 'path'
-
+const pathSrc = path.resolve(__dirname, 'src')
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
@@ -21,9 +20,7 @@ const port = process.env.port || process.env.npm_config_port || 9527 // dev port
 export default defineConfig({
   resolve: {
     alias: {
-      '~': fileURLToPath(new URL('./', import.meta.url)),
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
+      '@': pathSrc,
     },
   },
   server: {
@@ -32,8 +29,9 @@ export default defineConfig({
     open: true,
     proxy: {
       // 代理 /dev-api 的请求
-      '/api': {
+      '^/api': {
         changeOrigin: true,
+        target: 'http://localhost:9527', // env.VITE_APP_API_URL,
       },
     },
   },
