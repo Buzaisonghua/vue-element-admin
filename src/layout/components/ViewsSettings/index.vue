@@ -1,11 +1,10 @@
 <template>
   <div class="drawer-container">
     <div>
-      <h3 class="drawer-title">Page style setting</h3>
+      <h3 class="drawer-title">{{ t('settings.title') }}</h3>
 
       <div class="drawer-item">
-        <span style="padding-right: 12px">Theme Color</span>
-        {{ themeColor }}
+        <span style="padding-right: 12px">{{ t('settings.theme') }}</span>
         <theme-picker :color="themeColor" @updateColor="updateColor" />
       </div>
     </div>
@@ -16,6 +15,7 @@
 import ThemePicker from '@/components/ThemePicker/index.vue'
 import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
+const { t } = useI18n()
 
 const themeColor = computed(() => settingsStore.getThemeColor)
 const updateColor = (color: string = '#000000') => {
