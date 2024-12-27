@@ -17,6 +17,9 @@ import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
 
 const themeColor = computed(() => settingsStore.getThemeColor)
+// onBeforeMount(() => {
+//   updateColor(themeColor.value)
+// })
 const updateColor = (color: string) => {
   settingsStore.setThemeColor(color)
 }

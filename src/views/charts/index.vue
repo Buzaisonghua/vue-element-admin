@@ -1,3 +1,3 @@
 <template>
-    <div>charts</div>
+  <el-empty />
 </template>

@@ -3,7 +3,7 @@ import defaultSettings from '@/settins'
 const appStore = useAppStore()
 
 const { body } = document
-const WIDTH = defaultSettings.sidebarMoblie // refer to Bootstrap's responsive design
+const WIDTH = defaultSettings.sidebarMoblieWidth // refer to Bootstrap's responsive design
 
 export default {
   watch: {

@@ -1,6 +1,6 @@
 import { getInfo } from '@/api/auth'
 import { defineStore } from 'pinia'
-import { getToken } from '@/utils/auth'
+import { getToken, removeToken } from '@/utils/auth'
 
 export const useUserStore = defineStore('user', {
   state: (): Auth.UserInfo => ({
@@ -42,6 +42,10 @@ export const useUserStore = defineStore('user', {
         this.setUsername(username)
         this.setAvatar(avatar)
       }
+    },
+
+    setLogout() {
+      removeToken()
     },
   },
 })

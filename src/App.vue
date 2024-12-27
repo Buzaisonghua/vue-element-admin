@@ -1,21 +1,13 @@
 <template>
-  <div id="app">
+  <el-config-provider :locale="locale" :size="size">
     <router-view />
-  </div>
+  </el-config-provider>
 </template>
-<style lang="scss" scoped>
-#app {
-  height: 100%;
-}
-</style>
 
+<script setup lang="ts">
+import { useAppStore } from '@/store'
 
-<!-- <script setup lang="ts">
-import { onBeforeMount } from 'vue'
-import chace from '../mock/index'
-
-
-onBeforeMount(() => {
-  chace()
-});
-</script> -->
+const appStore = useAppStore()
+const locale = computed(() => appStore.getLanguageEl)
+const size = computed(() => appStore.getSize)
+</script>

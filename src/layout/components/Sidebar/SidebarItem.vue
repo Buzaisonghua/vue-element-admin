@@ -38,6 +38,6 @@ const routeHasChildren = () => {
 }
 
 const clickMenuItem = () => {
-  router.push({ name: props.route.name })
+  router.push({ name: props.route?.name })
 }
 </script>

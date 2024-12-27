@@ -1,3 +1,4 @@
 <template>
-    dashboard
+  dashboard
+  <el-button>Default</el-button>
 </template>

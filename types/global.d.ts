@@ -1,4 +1,5 @@
 declare namespace Global {
+  type LanguageType = 'ZH' | 'EN'
   /**
    * 系统设置
    */
@@ -8,7 +9,7 @@ declare namespace Global {
     /** 主题颜色 */
     themeColor: string
     /** 语言( zh-cn| en) */
-    language: string
+    language: LanguageType
   }
 }
 

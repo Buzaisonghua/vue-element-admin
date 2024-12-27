@@ -1,8 +1,10 @@
 <template>
   <el-icon v-if="!!props.icon"><svg-icon :icon-class="props.icon" /></el-icon>
-  <span>{{ props.title }}</span>
+  <span>{{ t(`route.${props.title}`) }}</span>
 </template>
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const props = defineProps({
   icon: {
     type: String,

@@ -15,7 +15,7 @@
     </div>
     <section class="layout-center">
       <header class="layout-header">
-        <NavBar />
+        <NavBar :isMobile="isMobile" />
         <TagsView />
       </header>
       <div class="center-box">

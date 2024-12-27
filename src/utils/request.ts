@@ -1,38 +1,37 @@
-import axios, { type InternalAxiosRequestConfig, type AxiosResponse } from "axios";
-import { getToken } from "./auth";
-import { ElMessage } from 'element-plus'
+import axios, { type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
+import { getToken } from './auth'
 
 // 创建 axios 实例
 const service = axios.create({
   baseURL: '/',
   timeout: 50000,
-});
+})
 
 const ResultEnum = {
   /**成功*/
-  SUCCESS: "200",
+  SUCCESS: '200',
   /**错误*/
-  ERROR: "500",
+  ERROR: '500',
   /**访问令牌无效或过期*/
-  ACCESS_TOKEN_INVALID: "A0230",
+  ACCESS_TOKEN_INVALID: 'A0230',
   /**刷新令牌无效或过期 */
-  REFRESH_TOKEN_INVALID: "A0231",
+  REFRESH_TOKEN_INVALID: 'A0231',
 }
 
 // 请求拦截器
 service.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const accessToken = getToken();
+    const accessToken = getToken()
     // 如果 Authorization 设置为 no-auth，则不携带 Token，用于登录、刷新 Token 等接口
-    if (config.headers.Authorization !== "no-auth" && accessToken) {
-      config.headers.Authorization = accessToken;
+    if (config.headers.Authorization !== 'no-auth' && accessToken) {
+      config.headers.Authorization = accessToken
     } else {
-      delete config.headers.Authorization;
+      delete config.headers.Authorization
     }
-    return config;
+    return config
   },
   (error) => Promise.reject(error)
-) 
+)
 // 响应拦截器
 service.interceptors.response.use(
   (response: AxiosResponse) => {
@@ -42,13 +41,13 @@ service.interceptors.response.use(
       ElMessage({
         message: res.msg || 'Error',
         type: 'warning',
-        duration: 5 * 1000
+        duration: 5 * 1000,
       })
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
       return res.data
     }
-    
+
     // // 如果响应是二进制流，则直接返回，用于下载文件、Excel 导出等
     // if (response.config.responseType === "blob") {
     //   return response;
@@ -76,8 +75,8 @@ service.interceptors.response.use(
     //     ElMessage.error(msg || "系统出错");
     //   }
     // }
-    return Promise.reject(error.message);
+    return Promise.reject(error.message)
   }
-);
+)
 
-export default service;
+export default service
