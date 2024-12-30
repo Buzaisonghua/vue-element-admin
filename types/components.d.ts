@@ -8,9 +8,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AvatarSelect: typeof import('./../src/layout/components/NavBar/AvatarSelect.vue')['default']
+    DarkBtn: typeof import('./../src/layout/components/NavBar/DarkBtn.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
@@ -21,6 +23,7 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Fullscreen: typeof import('./../src/layout/components/NavBar/Fullscreen.vue')['default']
     Hamburger: typeof import('./../src/layout/components/NavBar/Hamburger.vue')['default']
@@ -30,6 +33,7 @@ declare module 'vue' {
     RightPanel: typeof import('./../src/layout/components/RightPanel/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SettingsItem: typeof import('./../src/layout/components/ViewsSettings/SettingsItem.vue')['default']
     Sidebar: typeof import('./../src/layout/components/Sidebar/index.vue')['default']
     SidebarItem: typeof import('./../src/layout/components/Sidebar/SidebarItem.vue')['default']
     SizeSelect: typeof import('./../src/layout/components/NavBar/SizeSelect.vue')['default']

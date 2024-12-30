@@ -17,4 +17,14 @@ export default {
     github: 'Github',
     logOut: 'Log Out',
   },
+  settings: {
+    title: 'Page style setting',
+    darkThene: 'Theme',
+    dark: 'Dark',
+    theme: 'Theme Color',
+    interface: 'Interface',
+    tagsView: 'Open Tags-View',
+    fixedHeader: 'Fixed Header',
+    sidebarLogo: 'Sidebar Logo'
+  }
 }

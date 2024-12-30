@@ -7,6 +7,7 @@ const defaultSettings: Global.AppSettings = {
   size: 'default',
   themeColor: '#409EFF',
   sidebarMoblieWidth: 442,
+  tagsView: true
 }
 
 export default defaultSettings

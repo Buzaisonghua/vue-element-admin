@@ -30,8 +30,9 @@ const handleBtnClick = () => {
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   transform: translate(100%);
-  background: #fff;
+  background-color: $drawerBg;
   z-index: 40000;
+  color: $textColor;
   .handle-button {
     width: 48px;
     height: 48px;
@@ -57,7 +58,7 @@ const handleBtnClick = () => {
   position: fixed;
   top: 0;
   left: 0;
-  background: $drawerBg;
+  background: $drawerBgOverlay;
   z-index: -1;
 }
 .show-right-panel {

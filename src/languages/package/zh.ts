@@ -17,4 +17,14 @@ export default {
     github: '项目地址',
     logOut: '退出登录',
   },
+  settings: {
+    title: '系统布局配置',
+    darkThene: '主题配置',
+    dark: '主题',
+    theme: '主题颜色',
+    interface: '界面设置',
+    tagsView: '开启 Tags-View',
+    fixedHeader: '固定 Header',
+    sidebarLogo: '侧边栏 Logo'
+  }
 }

@@ -10,8 +10,12 @@ declare namespace Global {
     themeColor: string
     /** 语言( zh-cn| en) */
     language: LanguageType
+    /** 组件尺寸 */
     size: string
+    /** 宽度低于多少认定移动端 */
     sidebarMoblieWidth: number
+    /** 是否显示 tagsView */
+    tagsView: boolean
   }
 }
 

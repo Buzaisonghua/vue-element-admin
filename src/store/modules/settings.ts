@@ -1,20 +1,29 @@
 import { defineStore } from 'pinia'
 import defaultSettings from '@/settins'
-import { getStorage } from '@/utils/storage'
-import { generateThemeColors, applyTheme } from '@/utils/theme'
+import { setTheme } from '@/utils/theme'
+
 
 export const useSettingsStore = defineStore('settings', {
   state: () => ({
     themeColor: defaultSettings.themeColor,
+    tagsView: defaultSettings.tagsView,
   }),
   getters: {
     getThemeColor: (state) => state.themeColor,
+    getTagsView: state => state.tagsView
   },
   actions: {
-    setThemeColor(color: string) {
-      const colors = generateThemeColors(color)
-      applyTheme(colors)
+    setDark() {
+      useToggle(useDark())()
+      Promise.resolve().then(() => this.setThemeColor(this.themeColor))
     },
+    setThemeColor(color: string) {
+      this.themeColor = color
+      setTheme(this.themeColor, useDark().value)
+    },
+    setTagsView(tagsView: boolean) {
+      this.tagsView = tagsView
+    }
   },
 })
 

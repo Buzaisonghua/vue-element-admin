@@ -10,7 +10,9 @@
           <SizeSelect class="right-menu-item hover-effect" />
         </el-tooltip>
         <LangSelect class="right-menu-item hover-effect" />
-        <span @click="toggleDark()" >测试</span>
+        <div class="right-menu-item hover-effect">
+          <DarkBtn />
+        </div>
       </template>
       <AvatarSelect class="right-menu-item hover-effect" />
     </div>
@@ -22,14 +24,13 @@ import LangSelect from './LangSelect.vue'
 import SizeSelect from './SizeSelect.vue'
 import Fullscreen from './Fullscreen.vue'
 import AvatarSelect from './AvatarSelect.vue'
+import DarkBtn from './DarkBtn.vue'
 import { useAppStore } from '@/store/modules/app'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const appStore = useAppStore()
 const sidebar = computed(() => appStore.getSidebarOpened)
-import { useDark, useToggle } from '@vueuse/core'
-const isDark = useDark()
 
 const props = defineProps({
   isMobile: {
@@ -41,15 +42,12 @@ const props = defineProps({
 const sidebarClick = () => {
   appStore.setSidebarOpened()
 }
-
-const toggleDark = useToggle(isDark)
 </script>
 <style lang="scss" scoped>
 .navbar {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   display: flex;
   align-items: center;
@@ -61,13 +59,12 @@ const toggleDark = useToggle(isDark)
     display: inline-block;
     height: 100%;
     font-size: 18px;
-    color: #5a5e66;
     &.hover-effect {
       cursor: pointer;
       transition: background 0.3s;
 
       &:hover {
-        background: rgba(0, 0, 0, 0.025);
+        background: var(--el-menu-hover-bg-color);
       }
     }
   }
