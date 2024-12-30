@@ -10,6 +10,8 @@ declare namespace Global {
     themeColor: string
     /** 语言( zh-cn| en) */
     language: LanguageType
+    size: string
+    sidebarMoblieWidth: number
   }
 }
 
@@ -18,7 +20,7 @@ declare type Obj = { [key in string]: any }
 /**
  * 后台系统tag数据
  */
-declare namespace TagsType = {
+declare namespace TagsType {
   interface Tags {
     // 路由
     path: string

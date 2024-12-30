@@ -2,7 +2,7 @@
   <nav class="navbar">
     <Hamburger :sidebar="sidebar" @toggleClick="sidebarClick" />
     <div class="right-menu">
-      <template v-if="props.isMobile">
+      <template v-if="!props.isMobile">
         <div class="right-menu-item hover-effect">
           <Fullscreen />
         </div>
@@ -10,6 +10,7 @@
           <SizeSelect class="right-menu-item hover-effect" />
         </el-tooltip>
         <LangSelect class="right-menu-item hover-effect" />
+        <span @click="toggleDark()" >测试</span>
       </template>
       <AvatarSelect class="right-menu-item hover-effect" />
     </div>
@@ -27,6 +28,8 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const appStore = useAppStore()
 const sidebar = computed(() => appStore.getSidebarOpened)
+import { useDark, useToggle } from '@vueuse/core'
+const isDark = useDark()
 
 const props = defineProps({
   isMobile: {
@@ -38,6 +41,8 @@ const props = defineProps({
 const sidebarClick = () => {
   appStore.setSidebarOpened()
 }
+
+const toggleDark = useToggle(isDark)
 </script>
 <style lang="scss" scoped>
 .navbar {

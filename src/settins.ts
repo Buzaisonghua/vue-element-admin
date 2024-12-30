@@ -6,7 +6,7 @@ const defaultSettings: Global.AppSettings = {
   language: 'EN',
   size: 'default',
   themeColor: '#409EFF',
-  sidebarMoblieWidth: 942,
+  sidebarMoblieWidth: 442,
 }
 
 export default defaultSettings
