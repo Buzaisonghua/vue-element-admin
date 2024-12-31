@@ -16,6 +16,7 @@ types/auto-imports.d.ts
 
 # Editor directories and files
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
