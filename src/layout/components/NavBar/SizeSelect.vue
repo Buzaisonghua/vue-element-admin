@@ -19,17 +19,20 @@
 </template>
 
 <script lang="ts" setup>
-import useAppStore from '@/store/modules/app'
+defineProps({
+  size: {
+    type: String,
+  },
+})
+const emit = defineEmits(['change'])
 enum LanguageEnum {
   large = 'large',
   default = 'default',
   small = 'small',
 }
-const appStore = useAppStore()
-const size = computed(() => appStore.getSize)
 
 const handleSetSize = (size: string) => {
-  appStore.setSize(size)
+  emit('change', size)
 }
 </script>
 <style lang="scss" scoped>

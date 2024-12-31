@@ -19,19 +19,21 @@
 </template>
 
 <script lang="ts" setup>
-import useAppStore from '@/store/modules/app'
-import { useI18n } from 'vue-i18n'
 const { locale, t } = useI18n()
 enum LanguageEnum {
   ZH = '中文',
   EN = 'English',
 }
-const appStore = useAppStore()
-const language = computed(() => appStore.getLanguage)
+defineProps({
+  language: {
+    type: String,
+  },
+})
+const emit = defineEmits(['change'])
 
 const handleSetLanguage = (lang: Global.LanguageType) => {
   locale.value = lang
-  appStore.setLanguage(lang)
+  emit('change', lang)
   ElMessage({
     message: t('message.changeLanguageMsg'),
     type: 'success',

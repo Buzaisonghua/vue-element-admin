@@ -10,9 +10,9 @@ defineProps({
   sidebar: { type: Boolean },
 })
 const emit = defineEmits<{
-  toggleClick: []
+  click: []
 }>()
-const toggleClick = () => emit('toggleClick')
+const toggleClick = () => emit('click')
 </script>
 
 <style scoped lang="scss">

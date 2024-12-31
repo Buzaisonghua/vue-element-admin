@@ -50,7 +50,7 @@ export default defineMock([
           }
         }
       }
-      if ( token === 'A1' ) {
+      // if ( token === 'A1' ) {
         return {
           code: "200",
           data: {
@@ -61,7 +61,7 @@ export default defineMock([
               "https://foruda.gitee.com/images/1723603502796844527/03cdca2a_716974.gif",
           }
         }
-      }
+      // }
     }
   },
   {
