@@ -11,8 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+<<<<<<< HEAD
 types/components.d.ts
 types/auto-imports.d.ts
+=======
+/types/auto-imports.d.ts
+/types/components.d.ts
+>>>>>>> remotes/origin/main
 
 # Editor directories and files
 !.vscode/extensions.json

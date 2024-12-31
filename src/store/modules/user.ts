@@ -33,7 +33,7 @@ export const useUserStore = defineStore('user', {
     },
 
     /** 获取用户信息接口 */
-    async getUserInfo(refresh: boolean = false) {
+    async setUserInfo(refresh: boolean = false) {
       if (!this.userId || refresh) {
         const token = getToken()
         const { userId, username, nickname, avatar } = await getInfo(token as string)
@@ -49,5 +49,9 @@ export const useUserStore = defineStore('user', {
     },
   },
 })
+
+export const useUserStoreHook = () => {
+  return useUserStore()
+}
 
 export default useUserStore

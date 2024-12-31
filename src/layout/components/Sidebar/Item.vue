@@ -8,8 +8,9 @@ const { t } = useI18n()
 const props = defineProps({
   icon: {
     type: String,
-    default: () => '',
+    default: () => '',     
   },
+
   title: {
     type: String,
     default: () => '默认名称',

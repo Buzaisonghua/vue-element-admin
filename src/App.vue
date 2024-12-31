@@ -11,3 +11,5 @@ const appStore = useAppStore()
 const locale = computed(() => appStore.getLanguageEl)
 const size = computed(() => appStore.getSize)
 </script>
+
+

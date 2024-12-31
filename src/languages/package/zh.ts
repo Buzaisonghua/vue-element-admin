@@ -19,9 +19,20 @@ export default {
   },
   settings: {
     title: '系统布局配置',
+<<<<<<< HEAD
     theme: '主题颜色',
     tagsView: '开启 Tags-View',
     fixedHeader: '固定 Header',
     sidebarLogo: '侧边栏 Logo',
   },
+=======
+    darkThene: '主题配置',
+    dark: '主题',
+    theme: '主题颜色',
+    interface: '界面设置',
+    tagsView: '开启 Tags-View',
+    fixedHeader: '固定 Header',
+    sidebarLogo: '侧边栏 Logo'
+  }
+>>>>>>> remotes/origin/main
 }

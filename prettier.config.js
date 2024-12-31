@@ -3,7 +3,7 @@ export default {
     semi: false,
     printWidth: 100,
     singleQuote: true,
-    trailingComma: 'es5',
+    // trailingComma: 'es5',
     quoteProps: 'consistent',
     htmlWhitespaceSensitivity: 'strict',
     vueIndentScriptAndStyle: false,

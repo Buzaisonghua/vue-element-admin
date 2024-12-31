@@ -18,7 +18,7 @@
 </template>
 <script lang="ts" setup>
 import Item from './Item.vue'
-import { RouterInterface } from 'types/router'
+import { RouterNamespace } from 'types/router'
 
 const router = useRouter()
 defineOptions({
@@ -27,10 +27,10 @@ defineOptions({
 
 const props = defineProps({
   route: {
-    type: Object as PropType<RouterInterface.RouteRecord>,
+    type: Object as PropType<RouterNamespace.RouteRecord>,
   },
 })
-const { path, hidden, name, meta } = props.route as RouterInterface.RouteRecord
+const { path, hidden, name, meta } = props.route as RouterNamespace.RouteRecord
 
 // 判断路由是否有子路由
 const routeHasChildren = () => {

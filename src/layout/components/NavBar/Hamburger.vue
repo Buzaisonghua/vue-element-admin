@@ -10,9 +10,9 @@ defineProps({
   sidebar: { type: Boolean },
 })
 const emit = defineEmits<{
-  toggleClick: []
+  click: []
 }>()
-const toggleClick = () => emit('toggleClick')
+const toggleClick = () => emit('click')
 </script>
 
 <style scoped lang="scss">
@@ -24,7 +24,7 @@ const toggleClick = () => emit('toggleClick')
   align-items: center;
   cursor: pointer;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.025);
+    background-color: var(--el-menu-hover-bg-color);
   }
 }
 .hamburger.is-active {

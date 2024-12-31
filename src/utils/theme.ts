@@ -1,52 +1,86 @@
-// 辅助函数：将十六进制颜色转换为 RGB
-export function hexToRgb(hex: string): [number, number, number] {
-  const bigint = parseInt(hex.slice(1), 16)
-  return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255]
+import { ElMessage } from 'element-plus'
+
+/**
+ * hex颜色转rgb颜色
+ * @param str 颜色值字符串
+ * @returns 返回处理后的颜色值
+ */
+export function hexToRgb(str: any) {
+  let hexs: any = ''
+  const reg = /^\#?[0-9A-Fa-f]{6}$/
+  if (!reg.test(str)) return ElMessage.warning('输入错误的hex')
+  str = str.replace('#', '')
+
+  hexs = str.match(/../g)
+
+  for (let i = 0; i < 3; i++) hexs[i] = parseInt(hexs[i], 16)
+  return hexs
 }
 
-// 辅助函数：将 RGB 转换为十六进制颜色
-function rgbToHex(r: number, g: number, b: number): string {
-  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`
+/**
+ * rgb颜色转Hex颜色
+ * @param r 代表红色
+ * @param g 代表绿色
+ * @param b 代表蓝色
+ * @returns 返回处理后的颜色值
+ */
+export function rgbToHex(r: any, g: any, b: any) {
+  const reg = /^\d{1,3}$/
+  if (!reg.test(r) || !reg.test(g) || !reg.test(b))
+    return ElMessage.warning('输入错误的rgb颜色值')
+  const hexs = [r.toString(16), g.toString(16), b.toString(16)]
+
+  for (let i = 0; i < 3; i++) if (hexs[i].length == 1) hexs[i] = `0${hexs[i]}`
+
+  return `#${hexs.join('')}`
 }
 
-// 辅助函数：调整颜色亮度
-export function adjustBrightness(hex: string, factor?: number): string {
-  const rgb = hexToRgb(hex)
-  const newRgb = rgb.map((val) =>
-    Math.max(0, Math.min(255, Math.round(val + (255 - val) * factor)))
-  ) as [number, number, number]
-  return rgbToHex(...newRgb)
+/**
+ * 加深颜色值
+ * @param color 颜色值字符串
+ * @param level 加深的程度，限0-1之间
+ * @returns 返回处理后的颜色值
+ */
+export function getDarkColor(color: string, level: number) {
+  const reg = /^\#?[0-9A-Fa-f]{6}$/
+  if (!reg.test(color)) return ElMessage.warning('输入错误的hex颜色值')
+  const rgb = hexToRgb(color)
+  for (let i = 0; i < 3; i++)
+    rgb[i] = Math.round(20.5 * level + rgb[i] * (1 - level))
+  return rgbToHex(rgb[0], rgb[1], rgb[2])
 }
 
-export function generateThemeColors(primary: string) {
-  const colors: Record<string, string> = {
-    primary,
+/**
+ * 变浅颜色值
+ * @param color 颜色值字符串
+ * @param level 加深的程度，限0-1之间
+ * @returns 返回处理后的颜色值
+ */
+export function getLightColor(color: string, level: number) {
+  const reg = /^\#?[0-9A-Fa-f]{6}$/
+  if (!reg.test(color)) return ElMessage.warning('输入错误的hex颜色值')
+  const rgb = hexToRgb(color)
+
+  for (let i = 0; i < 3; i++) {
+    rgb[i] = Math.round(255 * level + rgb[i] * (1 - level))
   }
 
-  // 生成浅色变体
+  return rgbToHex(rgb[0], rgb[1], rgb[2])
+}
+
+export function setTheme(color: string, isDark: boolean) {
+  document.documentElement.style.setProperty(
+    '--el-color-primary',
+    color,
+  )
+
+  // 颜色加深或变浅
   for (let i = 1; i <= 9; i++) {
-    const factor = i * 0.1
-    colors[`primary-light-${i}`] = adjustBrightness(primary, factor)
-  }
-
-  // 生成深色变体
-  colors['primary-dark-2'] = adjustBrightness(primary, -0.2)
-
-  return colors
-}
-
-export function applyTheme(colors: Record<string, string>) {
-  const el = document.documentElement
-
-  Object.entries(colors).forEach(([key, value]) => {
-    el.style.setProperty(`--el-color-${key}`, value)
-  })
-}
-
-export function toggleDarkMode(isDark: boolean) {
-  if (isDark) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
+    document.documentElement.style.setProperty(
+      `--el-color-primary-light-${i}`,
+      isDark
+        ? `${getDarkColor(color, i / 10)}`
+        : `${getLightColor(color, i / 10)}`,
+    )
   }
 }

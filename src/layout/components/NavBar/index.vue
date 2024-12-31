@@ -1,15 +1,22 @@
 <template>
   <nav class="navbar">
-    <Hamburger :sidebar="sidebar" @toggleClick="sidebarClick" />
+    <Hamburger v-model="sidebar" @click="sidebarClick" />
     <div class="right-menu">
-      <template v-if="props.isMobile">
+      <template v-if="!isMobile">
         <div class="right-menu-item hover-effect">
           <Fullscreen />
         </div>
         <el-tooltip :content="t('navbar.size')" effect="dark" placement="bottom">
-          <SizeSelect class="right-menu-item hover-effect" />
+          <SizeSelect :size="size" @change="changeSize" class="right-menu-item hover-effect" />
         </el-tooltip>
-        <LangSelect class="right-menu-item hover-effect" />
+        <LangSelect
+          :language="language"
+          @change="changeLanguage"
+          class="right-menu-item hover-effect"
+        />
+        <div class="right-menu-item hover-effect">
+          <DarkBtn />
+        </div>
       </template>
       <AvatarSelect class="right-menu-item hover-effect" />
     </div>
@@ -21,14 +28,17 @@ import LangSelect from './LangSelect.vue'
 import SizeSelect from './SizeSelect.vue'
 import Fullscreen from './Fullscreen.vue'
 import AvatarSelect from './AvatarSelect.vue'
+import DarkBtn from './DarkBtn.vue'
+
 import { useAppStore } from '@/store/modules/app'
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
 const appStore = useAppStore()
-const sidebar = computed(() => appStore.getSidebarOpened)
+const { t } = useI18n()
 
-const props = defineProps({
+const sidebar = computed(() => appStore.getSidebarOpened)
+const size = computed(() => appStore.getSize)
+const language = computed(() => appStore.getLanguage)
+
+defineProps({
   isMobile: {
     type: Boolean,
     default: () => false,
@@ -38,13 +48,18 @@ const props = defineProps({
 const sidebarClick = () => {
   appStore.setSidebarOpened()
 }
+const changeSize = (size: string) => {
+  appStore.setSize(size)
+}
+const changeLanguage = (language: string) => {
+  appStore.setLanguage(language as Global.LanguageType)
+}
 </script>
 <style lang="scss" scoped>
 .navbar {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   display: flex;
   align-items: center;
@@ -56,13 +71,12 @@ const sidebarClick = () => {
     display: inline-block;
     height: 100%;
     font-size: 18px;
-    color: #5a5e66;
     &.hover-effect {
       cursor: pointer;
       transition: background 0.3s;
 
       &:hover {
-        background: rgba(0, 0, 0, 0.025);
+        background: var(--el-menu-hover-bg-color);
       }
     }
   }

@@ -55,18 +55,16 @@ const handleClickOutside = () => {
   display: flex;
   position: relative;
   .layout-sidebar {
-    background-color: #fff;
     height: 100%;
   }
   .layout-center {
     flex: 1;
-    background: #f2f3f5;
     z-index: 0;
-    .layout-header {
-      background: #fff;
-    }
+    display: flex;
+    flex-flow: column;
     .center-box {
-      // height: calc(100% - 84px);
+      flex: 1;
+      background-color: var(--el-bg-color-page);
     }
   }
   .drawer-bg {
@@ -76,11 +74,11 @@ const handleClickOutside = () => {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: $drawerBg;
+    background-color: $drawerBgOverlay;
   }
   &.is-desktop {
     &.sidebar-close .layout-sidebar {
-      width: 60px;
+      width: 64px;
       transition: 300ms all;
     }
     &.sidebar-open .layout-sidebar {
