@@ -2,11 +2,6 @@
   <div class="drawer-container">
     <div>
       <h3 class="drawer-title">{{ t('settings.title') }}</h3>
-<<<<<<< HEAD
-
-      <div class="drawer-item">
-        <span style="padding-right: 12px">{{ t('settings.theme') }}</span>
-=======
       <el-divider style="margin-top: 60px" content-position="center">{{
         t('settings.darkThene')
       }}</el-divider>
@@ -21,7 +16,6 @@
         </el-switch>
       </SettingsItem>
       <SettingsItem :title="t('settings.theme')">
->>>>>>> remotes/origin/main
         <theme-picker :color="themeColor" @updateColor="updateColor" />
       </SettingsItem>
       <el-divider content-position="center">{{ t('settings.interface') }}</el-divider>
@@ -38,12 +32,6 @@ import ThemePicker from '@/components/ThemePicker/index.vue'
 import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
 const { t } = useI18n()
-<<<<<<< HEAD
-
-const themeColor = computed(() => settingsStore.getThemeColor)
-const updateColor = (color: string = '#000000') => {
-  console.log(color)
-=======
 const isDark = useDark()
 const themeColor = computed(() => settingsStore.getThemeColor)
 const tagsView = ref(settingsStore.getTagsView)
@@ -53,7 +41,6 @@ onBeforeMount(() => {
 })
 // 改变主题色
 const updateColor = (color: string) => {
->>>>>>> remotes/origin/main
   settingsStore.setThemeColor(color)
 }
 // 改变主题

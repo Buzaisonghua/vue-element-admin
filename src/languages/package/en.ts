@@ -19,20 +19,12 @@ export default {
   },
   settings: {
     title: 'Page style setting',
-<<<<<<< HEAD
-    theme: 'Theme Color',
-    tagsView: 'Open Tags-View',
-    fixedHeader: 'Fixed Header',
-    sidebarLogo: 'Sidebar Logo',
-  },
-=======
     darkThene: 'Theme',
     dark: 'Dark',
     theme: 'Theme Color',
     interface: 'Interface',
     tagsView: 'Open Tags-View',
     fixedHeader: 'Fixed Header',
-    sidebarLogo: 'Sidebar Logo'
-  }
->>>>>>> remotes/origin/main
+    sidebarLogo: 'Sidebar Logo',
+  },
 }
