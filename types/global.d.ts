@@ -32,6 +32,7 @@ declare namespace TagsType {
     name: string
     // 名称
     title: string
+    /** 是否允许操作删除 */
+    detail?: boolean
   }
 }
-

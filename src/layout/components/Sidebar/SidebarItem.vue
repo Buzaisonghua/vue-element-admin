@@ -1,13 +1,15 @@
 <template>
   <template v-if="!hidden">
-    <!-- 存在子路由 -->
-    <template v-if="routeHasChildren()">
-      <el-sub-menu :index="name">
+    <template v-if="routeHasChildren() && !showChild">
+      <el-sub-menu :index="name as string">
         <template #title>
           <Item :icon="meta?.icon" :title="meta?.title" />
         </template>
         <sidebar-item v-for="child in props.route?.children" :key="child.path" :route="child" />
       </el-sub-menu>
+    </template>
+    <template v-else-if="showChild">
+      <sidebar-item v-for="child in props.route?.children" :key="child.path" :route="child" />
     </template>
     <template v-else>
       <el-menu-item :index="name" @click="clickMenuItem">
@@ -19,7 +21,8 @@
 <script lang="ts" setup>
 import Item from './Item.vue'
 import { RouterNamespace } from 'types/router'
-
+import { useRoutesStoreHook } from '@/store/modules/routes'
+const routesStoreHook = useRoutesStoreHook()
 const router = useRouter()
 defineOptions({
   name: 'SidebarItem',
@@ -30,11 +33,18 @@ const props = defineProps({
     type: Object as PropType<RouterNamespace.RouteRecord>,
   },
 })
-const { path, hidden, name, meta } = props.route as RouterNamespace.RouteRecord
+const { path, hidden, name, meta, role, showChild, children } =
+  props.route as RouterNamespace.RouteRecord
 
 // 判断路由是否有子路由
 const routeHasChildren = () => {
   return !!props.route?.children
+}
+
+// 判断是否有权限
+const routeHasRole = () => {
+  const getRoles = routesStoreHook.getRoles
+  return !role ? true : !!getRoles[name || '']
 }
 
 const clickMenuItem = () => {

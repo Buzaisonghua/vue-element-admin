@@ -18,16 +18,32 @@ export const constantRoutes: RouterNamespace.RouteRecord[] = [
     component: Layout,
     name: 'Layout',
     redirect: '/dashboard',
-    constantInRoute: true,
+    showChild: true,
     children: [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        noCache: true,
         component: () => import('@/views/dashboard/index.vue'),
+        affix: true,
         meta: {
           title: 'Dashboard',
           icon: 'smile-fill',
+        },
+      },
+    ],
+  },
+  {
+    path: '/document',
+    component: Layout,
+    showChild: true,
+    children: [
+      {
+        path: '',
+        name: 'Document',
+        component: () => import('@/views/documnet/index.vue'),
+        meta: {
+          title: 'Document',
+          icon: 'document',
         },
       },
     ],

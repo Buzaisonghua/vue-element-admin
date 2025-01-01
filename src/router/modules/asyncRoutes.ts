@@ -11,33 +11,47 @@ export const Layout = () => import('@/layout/index.vue')
  */
 export const asyncRoutes: RouterNamespace.RouteRecord[] = [
   {
-    path: '/document',
+    path: '/charts',
     component: Layout,
-    noCache: true,
-    hasChildSidebar: true,
+    showChild: true,
     children: [
       {
-        path: '/',
-        name: 'Document',
-        component: () => import('@/views/documnet/index.vue'),
+        path: '',
+        name: 'Charts',
+        component: () => import('@/views/charts/index.vue'),
         meta: {
-          title: 'Document',
+          title: 'Charts',
           icon: 'chart-area',
         },
       },
     ],
   },
   {
-    path: '/charts',
+    path: '/icons',
+    name: 'Icons',
+    redirect: '/icons/demo',
     component: Layout,
+    meta: {
+      title: 'Icons',
+      icon: 'icon-demo',
+    },
     children: [
       {
-        path: '/',
-        name: 'Charts',
-        component: () => import('@/views/charts/index.vue'),
+        path: 'my',
+        name: 'MyIcons',
+        component: () => import('@/views/iconsView/myIcons.vue'),
         meta: {
-          title: 'Charts',
-          icon: 'chart-area',
+          title: 'MyIcons',
+          icon: 'my-icons',
+        },
+      },
+      {
+        path: 'element',
+        name: 'ElementIcons',
+        component: () => import('@/views/iconsView/elementIcons.vue'),
+        meta: {
+          title: 'ElementIcons',
+          icon: 'element-icons',
         },
       },
     ],
@@ -56,6 +70,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         path: 'test',
         name: 'Test',
         component: () => import('@/views/authority/test/index.vue'),
+        role: true,
         meta: {
           title: 'Test',
           icon: 'user-fill',
@@ -65,6 +80,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         path: 'admin',
         name: 'Admin',
         component: () => import('@/views/authority/admin/index.vue'),
+        role: true,
         meta: {
           title: 'Admin',
         },
@@ -72,6 +88,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
       {
         path: 'root',
         name: 'Root',
+        role: true,
         component: () => import('@/views/authority/root/index.vue'),
         meta: {
           title: 'Root',

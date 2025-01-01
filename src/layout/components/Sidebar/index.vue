@@ -1,13 +1,12 @@
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper" height="100%">
-    {{ viewsRoute }}
     <el-menu
       :default-active="active as string"
       class="el-menu-vertical-demo"
       :collapse="!isCollapse"
       :collapse-transition="false"
     >
-      <template v-for="item in viewsRoute?.children" :key="item.path">
+      <template v-for="item in routes" :key="item.path">
         <SidebarItem :route="item" />
       </template>
     </el-menu>
@@ -16,16 +15,18 @@
 
 <script lang="ts" setup>
 import { useAppStore } from '@/store'
-import useRoutesStore from '@/store/modules/routes'
+import { useRoutesStoreHook } from '@/store/modules/routes'
 import { computed } from 'vue'
 import SidebarItem from './SidebarItem.vue'
+const route = useRoute()
+const active = computed(() => route.name)
+
 const appStore = useAppStore()
 const isCollapse = computed(() =>
   appStore.getDevice === 'mobile' ? true : appStore.getSidebarOpened,
 )
-const routesStore = useRoutesStore()
-const viewsRoute = routesStore.getRoutes
-console.log(viewsRoute, routesStore)
+const routesStore = useRoutesStoreHook()
+const routes = routesStore.getRoutes
 </script>
 
 <style lang="scss">

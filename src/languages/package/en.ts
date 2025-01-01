@@ -2,7 +2,11 @@ export default {
   // 菜单国际化
   route: {
     Dashboard: 'Dashboard',
+    Document: 'Document',
     Charts: 'Charts',
+    Icons: 'IconsLibrary',
+    MyIcons: 'MyIcons',
+    ElementIcons: 'ElementIcons',
     Authority: 'Authority',
     Test: 'Test',
     Admin: 'Admin',

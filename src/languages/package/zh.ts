@@ -2,7 +2,11 @@ export default {
   // 菜单国际化
   route: {
     Dashboard: '首页',
+    Document: '文档',
     Charts: '图表',
+    Icons: '图标库',
+    MyIcons: '我的图标库',
+    ElementIcons: '饿了么图标库',
     Authority: '权限测试',
     Test: '普通成员',
     Admin: '管理员',

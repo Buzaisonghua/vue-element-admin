@@ -7,14 +7,12 @@ declare namespace RouterNamespace {
     query?: any
     /** 判断导航是否在导航栏显示，默认是fasle,true为不显示 */
     hidden?: boolean
-    /** 判断路由是否需要权限，默认是false,true为不需要验证权限 */
-    noCache?: boolean
-    /** 判断constantRoutes列表中会显示在导航中的路由，默认为false不显示，true为显示 */
-    constantInRoute?: boolean
-    /**
-     * 当路由的子路由仅剩一个时，默认会取消这个子路由显示，合并到父级路由上
-     * */
-    noChildSidebar?: boolean
+    /** 判断路由是否需要权限，默认是false,true为需要验证权限 */
+    role?: boolean
+    /** 当路由的子路由仅剩一个时，默认会取消这个子路由显示，合并到父级路由上 */
+    showChild?: boolean
+    /** 设置为true时会默认在tagsView上显示 */
+    affix?: boolean
     children?: RouteRecord[]
   } & Omit<RouteRecordRaw, 'name' | 'children'>
   interface RouteMeta {
