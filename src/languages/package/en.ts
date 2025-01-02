@@ -14,6 +14,8 @@ export default {
   },
   message: {
     changeLanguageMsg: 'Switch language to English',
+    copyIconMsgSuccess: 'Copy Success',
+    copyIconMsgError: 'Copy Error',
   },
   navbar: {
     size: 'Global Size',

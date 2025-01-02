@@ -31,9 +31,6 @@ function getPermission(router: Router) {
         next({ path: '/' })
       } else {
         await getUserAndRoute()
-        console.log('zzzs')
-        // next({ ...to, replace: true })
-        console.log(to)
         next()
       }
     } else {

@@ -77,7 +77,6 @@ const filterAffixTags = (routes: RouterNamespace.RouteRecord[], basePath = '/') 
 
 const initTags = () => {
   const affixTags = filterAffixTags(router.getRoutes)
-  console.log(affixTags, 'aaaaaaaa')
   for (const tag of affixTags) {
     // Must have tag name
     if (tag.name) {

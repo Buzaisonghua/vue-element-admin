@@ -14,6 +14,8 @@ export default {
   },
   message: {
     changeLanguageMsg: '语言切换为中文',
+    copyIconMsgSuccess: '复制成功',
+    copyIconMsgError: '复制失败',
   },
   navbar: {
     size: '布局大小',

@@ -1,21 +1,13 @@
-// //引入svg组件
-// import SvgIcon from './SvgIcon.vue'
+import type { App } from 'vue'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import SvgIcon from './SvgIcon.vue'
 
-// //配置多个全局组件
-// const componentsConfig = [
-//   {
-//     name: 'SvgIcon',
-//     component: SvgIcon
-//   }
-// ]
-
-// function addGlobal() {
-//   return {
-//     install: function (Vue) {
-//       componentsConfig.forEach((config) => {
-//       })
-//     }
-//   }
-// }
-// const components = addGlobal()
-// export default components
+// 注册所有图标
+export function setupElIcons(app: App<Element>) {
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+  }
+}
+export function setupIcons(app: App<Element>) {
+  app.component('SvgIcon', SvgIcon)
+}

@@ -62,9 +62,10 @@ const handleClickOutside = () => {
     z-index: 0;
     display: flex;
     flex-flow: column;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    height: 100vh;
     .center-box {
-      flex: 1;
+      height: calc(100vh - 84px);
       background-color: var(--el-bg-color-page);
     }
   }

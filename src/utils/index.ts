@@ -1,26 +1,28 @@
-import Clipboard from 'clipboard'
-
-export function copy(text: string, event: { target: any }) {
-  const el = event.target
-  //   console.log(el, tet)
-  const clipboard = new Clipboard(el, {
-    text: () => text,
-  })
-  clipboard.on('success', () => {
-    getAlert('复制成功')
-    clipboard.destroy()
-  })
-  clipboard.on('error', () => {
-    getAlert('复制失败', 'error')
-    clipboard.destroy()
+/**
+ * 复制方法
+ * @param text 复制的文字内容
+ * @param msg 复制成功的提示内容
+ * @returns
+ */
+export function copy(text: string, msg?: string) {
+  return new Promise((resolve, reject) => {
+    navigator.clipboard
+      .writeText(text)
+      .then((res) => {
+        getAlert(msg ? msg : '复制成功')
+        resolve('')
+      })
+      .catch((e) => {
+        getAlert(`复制失败-${e}`, 'error')
+        reject()
+      })
   })
 }
 
-type AlertType = 'success' | 'info' | 'warning' | 'error'
+// 提示
 export function getAlert(text = '', type: AlertType = 'success') {
   ElMessage({
     message: text ? text : type,
     type: type,
   })
 }
-// <svg-icon :icon-class="WIFI" /><svg-icon :icon-class="WIFI" />

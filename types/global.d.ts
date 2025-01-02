@@ -36,3 +36,5 @@ declare namespace TagsType {
     detail?: boolean
   }
 }
+
+type AlertType = 'success' | 'info' | 'warning' | 'error'

@@ -1,52 +1,38 @@
 <template>
-  <div
-    v-if="isExternal"
-    :style="styleExternalIcon"
-    class="svg-external-icon svg-icon"
-    v-on="$attrs"
-  />
-  <svg v-else :class="svgClass" aria-hidden="true" v-on="$attrs">
+  <div v-if="isExternalBoolean" :style="styleExternalIcon" class="svg-external-icon svg-icon" />
+  <svg v-else :class="svgClass" aria-hidden="true">
     <use :xlink:href="iconName" />
   </svg>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { isExternal } from '@/utils/validate'
-
-export default {
+defineOptions({
   name: 'SvgIcon',
-  props: {
-    iconClass: {
-      type: String,
-      required: true,
-    },
-    className: {
-      type: String,
-      default: '',
-    },
+})
+const props = defineProps({
+  iconClass: {
+    type: String,
+    default: () => '',
   },
-  computed: {
-    isExternal() {
-      return isExternal(this.iconClass)
-    },
-    iconName() {
-      return `#icon-${this.iconClass}`
-    },
-    svgClass() {
-      if (this.className) {
-        return 'svg-icon ' + this.className
-      } else {
-        return 'svg-icon'
-      }
-    },
-    styleExternalIcon() {
-      return {
-        'mask': `url(${this.iconClass}) no-repeat 50% 50%`,
-        '-webkit-mask': `url(${this.iconClass}) no-repeat 50% 50%`,
-      }
-    },
+  className: {
+    type: String,
+    default: () => '',
   },
-}
+})
+const isExternalBoolean = computed(() => isExternal(props.iconClass))
+const iconName = computed(() => `#icon-${props.iconClass}`)
+const svgClass = computed(() => {
+  if (props.className) {
+    return 'svg-icon ' + props.className
+  } else {
+    return 'svg-icon'
+  }
+})
+const styleExternalIcon = computed(() => ({
+  'mask': `url(${props.iconClass}) no-repeat 50% 50%`,
+  '-webkit-mask': `url(${props.iconClass}) no-repeat 50% 50%`,
+}))
 </script>
 
 <style scoped>

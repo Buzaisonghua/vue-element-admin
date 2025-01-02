@@ -1,6 +1,12 @@
 @use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
 @import './normalize.css';
 
+.text {
+  overflow: hidden; /* 确保超出容器的文本被裁剪 */
+  white-space: nowrap; /* 确保文本在一行内显示 */
+  text-overflow: ellipsis; /* 使用省略号表示文本超出 */
+}
+
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -18,6 +24,13 @@ body {
 
 html {
   height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 #app {
