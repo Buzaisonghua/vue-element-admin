@@ -1,5 +1,5 @@
 import axios, { type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
-import { getToken } from './auth'
+import { getToken, removeToken } from './auth'
 import { ElMessage } from 'element-plus'
 
 // 创建 axios 实例
@@ -31,7 +31,7 @@ service.interceptors.request.use(
     }
     return config
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 )
 // 响应拦截器
 service.interceptors.response.use(
@@ -39,6 +39,17 @@ service.interceptors.response.use(
     const res = response.data
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== ResultEnum.SUCCESS) {
+      // 登录过期
+      if (res.code === ResultEnum.ACCESS_TOKEN_INVALID) {
+        ElMessageBox.alert('登录过期，重新登录', '提示', {
+          type: 'warning',
+          showCancelButton: false,
+          confirmButtonText: '重新登录',
+        }).then(() => {
+          removeToken()
+          location.reload()
+        })
+      }
       ElMessage({
         message: res.msg || 'Error',
         type: 'warning',
@@ -77,7 +88,7 @@ service.interceptors.response.use(
     //   }
     // }
     return Promise.reject(error.message)
-  }
+  },
 )
 
 export default service
