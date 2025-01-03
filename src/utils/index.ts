@@ -1,3 +1,5 @@
+import { debounce as debounceLodash, throttle as throttleLodash } from 'lodash-es'
+
 /**
  * 复制方法
  * @param text 复制的文字内容
@@ -25,4 +27,12 @@ export function getAlert(text = '', type: AlertType = 'success') {
     message: text ? text : type,
     type: type,
   })
+}
+
+export function debounce<T extends (...args: any) => any>(func: T, wait: number | undefined) {
+  return debounceLodash(func, wait)
+}
+
+export function throttle<T extends (...args: any) => any>(func: T, wait: number | undefined) {
+  return throttleLodash(func, wait)
 }

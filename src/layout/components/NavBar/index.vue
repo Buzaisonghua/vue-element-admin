@@ -1,8 +1,11 @@
 <template>
   <nav class="navbar">
-    <Hamburger v-model="sidebar" @click="sidebarClick" />
+    <Hamburger :sidebar="sidebar" @click="sidebarClick" />
     <div class="right-menu">
       <template v-if="!isMobile">
+        <div class="right-menu-item">
+          <HeaderSearch />
+        </div>
         <div class="right-menu-item hover-effect">
           <Fullscreen />
         </div>
@@ -29,6 +32,7 @@ import SizeSelect from './SizeSelect.vue'
 import Fullscreen from './Fullscreen.vue'
 import AvatarSelect from './AvatarSelect.vue'
 import DarkBtn from './DarkBtn.vue'
+import HeaderSearch from './HeaderSearch.vue'
 
 import { useAppStore } from '@/store/modules/app'
 const appStore = useAppStore()

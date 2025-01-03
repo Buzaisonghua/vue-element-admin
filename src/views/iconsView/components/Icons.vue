@@ -1,22 +1,26 @@
 <template>
-  <div class="icons-container">
+  <div class="icons-container" @scroll="scrollIcons">
     <div class="grid">
-      <!-- <el-tooltip placement="top" :content="svgText(item)" > -->
-      <div
-        class="icon-item"
-        v-for="item in icons"
-        :key="item"
-        @click="clickIconItem(svgText(item))"
-      >
-        <svg-icon v-if="type === 'my'" :icon-class="item" />
-        <el-icon v-else><component :is="item" /></el-icon>
-        <span class="text">{{ item }}</span>
+      <div v-for="item in icons" :key="item">
+        <el-tooltip
+          placement="top"
+          ref="tooltipRef"
+          tigger="contextmenu"
+          :content="svgText(item)"
+          :disabled="show"
+        >
+          <div class="icon-item" @click="clickIconItem(svgText(item))">
+            <svg-icon v-if="type === 'my'" :icon-class="item" />
+            <el-icon v-else><component :is="item" /></el-icon>
+            <span class="text">{{ item }}</span>
+          </div>
+        </el-tooltip>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { copy } from '@/utils'
+import { copy, throttle } from '@/utils'
 
 const { t } = useI18n()
 const props = defineProps({
@@ -28,10 +32,20 @@ const props = defineProps({
     default: () => 'my',
   },
 })
+const tooltipRef = ref<UploadInstance>()
+const show = ref<Boolean>(false)
+
+/**
+ * 这里是为了解决 element 的bug
+ * 在一个元素上触发tooltip，然后滑动滚动条并不会及时消失导致外层被撑开
+ */
+const scrollIcons = throttle(() => {
+  show.value = true
+  nextTick(() => (show.value = false))
+}, 500)
+
 const svgText = (item: string) =>
-  props.type === 'my'
-    ? `<svg-icon :icon-class="${item}" />`
-    : `<el-icon v-else><${item} /></el-icon>`
+  props.type === 'my' ? `<svg-icon :icon-class="${item}" />` : `<el-icon><${item} /></el-icon>`
 const clickIconItem = (item: string) => {
   copy(item, t('message.copyIconMsgSuccess'))
 }

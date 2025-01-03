@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    A: typeof import('../src/layout/components/TagsView/ScrollPane.vue')['default']
     AvatarSelect: typeof import('./../src/layout/components/NavBar/AvatarSelect.vue')['default']
     DarkBtn: typeof import('./../src/layout/components/NavBar/DarkBtn.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -22,13 +23,16 @@ declare module 'vue' {
     ElImage: typeof import('element-plus/es')['ElImage']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElOption: typeof import('element-plus/es')['ElOption']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElText: typeof import('element-plus/es')['ElText']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Fullscreen: typeof import('./../src/layout/components/NavBar/Fullscreen.vue')['default']
     Hamburger: typeof import('./../src/layout/components/NavBar/Hamburger.vue')['default']
+    HeaderSearch: typeof import('./../src/layout/components/NavBar/HeaderSearch.vue')['default']
     Icons: typeof import('./../src/views/iconsView/components/Icons.vue')['default']
     Item: typeof import('./../src/layout/components/Sidebar/Item.vue')['default']
     LangSelect: typeof import('./../src/layout/components/NavBar/LangSelect.vue')['default']
@@ -36,6 +40,7 @@ declare module 'vue' {
     RightPanel: typeof import('./../src/layout/components/RightPanel/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ScrollPane: typeof import('./../src/layout/components/TagsView/ScrollPane.vue')['default']
     SettingsItem: typeof import('./../src/layout/components/ViewsSettings/SettingsItem.vue')['default']
     Sidebar: typeof import('./../src/layout/components/Sidebar/index.vue')['default']
     SidebarItem: typeof import('./../src/layout/components/Sidebar/SidebarItem.vue')['default']

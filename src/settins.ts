@@ -3,11 +3,11 @@ const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)')
 
 const defaultSettings: Global.AppSettings = {
   title: 'BZSH',
-  language: 'EN',
+  language: 'ZH',
   size: 'default',
   themeColor: '#409EFF',
   sidebarMoblieWidth: 442,
-  tagsView: true
+  tagsView: true,
 }
 
 export default defaultSettings

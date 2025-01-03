@@ -1,18 +1,18 @@
 <template>
   <div class="tags-view-container" v-if="show">
-    <router-link
-      v-for="tag in visitedViews"
-      ref="tag"
-      :key="tag.path"
-      :class="isActive(tag.name) ? 'active' : ''"
-      :to="{ name: tag.name }"
-      tag="span"
-      class="tags-view-item"
-    >
-      {{ tag.title }}
-
-      <span class="el-icon-close" />
-    </router-link>
+    <scroll-pane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
+      <router-link
+        v-for="tag in visitedViews"
+        ref="tag"
+        :key="tag.path"
+        :class="isActive(tag.name) ? 'active' : ''"
+        :to="{ name: tag.name }"
+        tag="span"
+        class="tags-view-item"
+      >
+        {{ t(`route.${tag.title}`) }}
+      </router-link>
+    </scroll-pane>
   </div>
 </template>
 <script lang="ts" setup>
@@ -26,6 +26,7 @@ const router = useRoutesStoreHook()
 const route = useRoute() // 获取当前路由对象
 const tagsStore = useTagsStore()
 const visitedViews = tagsStore.getVisitedViews
+const { t } = useI18n()
 
 const addTags = (route: Obj) => {
   const {
@@ -52,6 +53,8 @@ onBeforeMount(() => {
   initTags()
   addTags(route)
 })
+
+const handleScroll = () => {}
 
 const filterAffixTags = (routes: RouterNamespace.RouteRecord[], basePath = '/') => {
   let tags: Array<TagsType.Tags> = []
