@@ -5,7 +5,6 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { useRoutesStoreHook, useUserStoreHook } from '@/store'
 import routeWhiteList from './routeWhiteList'
-
 function getPermission(router: Router) {
   // 进度条
   NProgress.configure({

@@ -21,6 +21,7 @@
     "pinyin": "2.9.0",
     "screenfull": "^6.0.2",
     "vue": "^3.5.13",
+    "vue-count-to": "^1.0.13",
     "vue-i18n": "^11.0.1",
     "vue-router": "next"
   },
@@ -29,9 +30,9 @@
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.10.1",
     "@types/nprogress": "^0.2.3",
+    "@types/path-to-regexp": "^1.7.0",
     "@types/pinyin": "^2.10.2",
     "@types/vue-i18n": "^7.0.0",
-    "@types/path-to-regexp": "^1.7.0",
     "@typescript-eslint/eslint-plugin": "^8.18.2",
     "@typescript-eslint/parser": "^8.18.2",
     "@vitejs/plugin-vue": "^5.2.1",
