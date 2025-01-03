@@ -11,6 +11,9 @@
         class="tags-view-item"
       >
         {{ t(`route.${tag.title}`) }}
+        <span class="delete-container" v-if="!tag.detail" @click.prevent.stop="deleteTag(tag)">
+          <svg-icon class="delete-icon" icon-class="times" />
+        </span>
       </router-link>
     </scroll-pane>
   </div>
@@ -19,13 +22,15 @@
 import { useSettingsStore, useRoutesStoreHook } from '@/store'
 import useTagsStore from '@/store/modules/tags'
 import { RouterNamespace } from 'types/router'
+import { useRouter } from 'vue-router'
 const settingsStore = useSettingsStore()
 
 const show = computed(() => settingsStore.getTagsView)
 const router = useRoutesStoreHook()
+const { push } = useRouter()
 const route = useRoute() // 获取当前路由对象
 const tagsStore = useTagsStore()
-const visitedViews = tagsStore.getVisitedViews
+const visitedViews = computed(() => tagsStore.getVisitedViews)
 const { t } = useI18n()
 
 const addTags = (route: Obj) => {
@@ -91,6 +96,20 @@ const initTags = () => {
 const isActive = (name: string) => {
   return name === route.name
 }
+
+// 删除tag
+const deleteTag = (tag: TagsType.Tags) => {
+  tagsStore.deleteVisitedViews(tag)
+  if (isActive(tag.name)) {
+    toLastView()
+  }
+}
+const toLastView = () => {
+  const latestView = visitedViews.value.slice(-1)[0]
+  if (latestView) {
+    push({ name: latestView.name })
+  }
+}
 </script>
 <style lang="scss" scoped>
 .tags-view-container {
@@ -131,6 +150,23 @@ const isActive = (name: string) => {
         border-radius: 50%;
         position: relative;
         margin-right: 2px;
+      }
+    }
+    .delete-container {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      transform: translateY(2px);
+      margin-left: 4px;
+      position: relative;
+      .delete-icon {
+        position: absolute;
+        transform: scale(0.6);
+      }
+      &:hover {
+        background-color: $hoverBg;
+        color: $bg;
       }
     }
   }

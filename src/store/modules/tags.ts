@@ -14,6 +14,9 @@ export const useTagsStore = defineStore('tags', {
       if (this.visitedViews.some((val) => val.name === route.name)) return
       this.visitedViews.push(route)
     },
+    deleteVisitedViews(tag: TagsType.Tags) {
+      this.visitedViews = this.visitedViews.filter((val) => val.name !== tag.name)
+    },
   },
 })
 

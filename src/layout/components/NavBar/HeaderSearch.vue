@@ -8,7 +8,7 @@
       filterable
       default-first-option
       remote
-      placeholder="Search"
+      placeholder=""
       class="header-search-select"
       @change="change"
     >
@@ -40,8 +40,8 @@ const router = useRouter()
 const headerSearchSelectRef = ref<InstanceType>()
 const show = ref(false)
 const search = ref('')
-let searchPool: IOptions[] = ref([])
-let options: IOptions[] = ref([])
+let searchPool: IOptions[] = ref<IOptions[]>([])
+let options: IOptions[] = ref<IOptions[]>([])
 let fuse: any = ''
 const language = computed(() => appStore.getLanguage)
 const routes = routesStore.getRoutes

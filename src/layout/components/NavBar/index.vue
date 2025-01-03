@@ -1,6 +1,9 @@
 <template>
   <nav class="navbar">
-    <Hamburger :sidebar="sidebar" @click="sidebarClick" />
+    <div class="left-menu">
+      <Hamburger :sidebar="sidebar" @click="sidebarClick" />
+      <Breadcrumb v-if="!isMobile" />
+    </div>
     <div class="right-menu">
       <template v-if="!isMobile">
         <div class="right-menu-item">
@@ -33,6 +36,7 @@ import Fullscreen from './Fullscreen.vue'
 import AvatarSelect from './AvatarSelect.vue'
 import DarkBtn from './DarkBtn.vue'
 import HeaderSearch from './HeaderSearch.vue'
+import Breadcrumb from './Breadcrumb.vue'
 
 import { useAppStore } from '@/store/modules/app'
 const appStore = useAppStore()
@@ -68,7 +72,10 @@ const changeLanguage = (language: string) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .left-menu,
   .right-menu {
+    display: flex;
+    align-items: center;
     height: 100%;
   }
   .right-menu-item {

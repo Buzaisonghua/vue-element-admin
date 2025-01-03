@@ -26,7 +26,7 @@ export const constantRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/dashboard/index.vue'),
         affix: true,
         meta: {
-          title: 'Dashboard',
+          title: 'dashboard',
           icon: 'smile-fill',
         },
       },
@@ -42,7 +42,7 @@ export const constantRoutes: RouterNamespace.RouteRecord[] = [
         name: 'Document',
         component: () => import('@/views/documnet/index.vue'),
         meta: {
-          title: 'Document',
+          title: 'document',
           icon: 'document',
         },
       },

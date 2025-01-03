@@ -25,15 +25,15 @@ import { copy, throttle } from '@/utils'
 const { t } = useI18n()
 const props = defineProps({
   icons: {
-    type: Array,
+    type: Array as PropType<string[]>,
   },
   type: {
     type: String,
     default: () => 'my',
   },
 })
-const tooltipRef = ref<UploadInstance>()
-const show = ref<Boolean>(false)
+const tooltipRef = ref()
+const show = ref(false)
 
 /**
  * 这里是为了解决 element 的bug
@@ -45,7 +45,7 @@ const scrollIcons = throttle(() => {
 }, 500)
 
 const svgText = (item: string) =>
-  props.type === 'my' ? `<svg-icon :icon-class="${item}" />` : `<el-icon><${item} /></el-icon>`
+  props.type === 'my' ? `<svg-icon icon-class="${item}" />` : `<el-icon><${item} /></el-icon>`
 const clickIconItem = (item: string) => {
   copy(item, t('message.copyIconMsgSuccess'))
 }

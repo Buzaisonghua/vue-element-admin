@@ -20,7 +20,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         name: 'Charts',
         component: () => import('@/views/charts/index.vue'),
         meta: {
-          title: 'Charts',
+          title: 'charts',
           icon: 'chart-area',
         },
       },
@@ -32,7 +32,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
     redirect: '/icons/demo',
     component: Layout,
     meta: {
-      title: 'Icons',
+      title: 'icons',
       icon: 'icon-demo',
     },
     children: [
@@ -41,7 +41,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         name: 'MyIcons',
         component: () => import('@/views/iconsView/myIcons.vue'),
         meta: {
-          title: 'MyIcons',
+          title: 'myIcons',
           icon: 'my-icons',
         },
       },
@@ -50,7 +50,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         name: 'ElementIcons',
         component: () => import('@/views/iconsView/elementIcons.vue'),
         meta: {
-          title: 'ElementIcons',
+          title: 'elementIcons',
           icon: 'element-icons',
         },
       },
@@ -62,7 +62,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
     redirect: '/authority/test',
     component: Layout,
     meta: {
-      title: 'Authority',
+      title: 'authority',
       icon: 'gem',
     },
     children: [
@@ -72,7 +72,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/authority/test/index.vue'),
         role: true,
         meta: {
-          title: 'Test',
+          title: 'test',
           icon: 'user-fill',
         },
       },
@@ -82,7 +82,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/authority/admin/index.vue'),
         role: true,
         meta: {
-          title: 'Admin',
+          title: 'admin',
         },
       },
       {
@@ -91,7 +91,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         role: true,
         component: () => import('@/views/authority/root/index.vue'),
         meta: {
-          title: 'Root',
+          title: 'root',
         },
       },
     ],
@@ -111,7 +111,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/menu/menu1/index.vue'),
         name: 'Menu1',
         meta: { title: 'menu1' },
-        redirect: '/nested/menu1/menu1-1',
+        redirect: '/menu/menu1/menu1-1',
         children: [
           {
             path: 'menu1-1',
@@ -123,7 +123,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
             path: 'menu1-2',
             component: () => import('@/views/menu/menu1/menu1-2/index.vue'),
             name: 'Menu1-2',
-            redirect: '/nested/menu1/menu1-2/menu1-2-1',
+            redirect: '/menu/menu1/menu1-2/menu1-2-1',
             meta: { title: 'menu1-2' },
             children: [
               {
