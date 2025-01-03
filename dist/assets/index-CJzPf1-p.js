@@ -1,0 +1,1 @@
+import{be as e,n as t,q as c}from"./index-DR5xYxPI.js";const o={},s={class:"test"};function n(a,r){return t(),c("div",s," root和admin才有的页面 ")}const d=e(o,[["render",n],["__scopeId","data-v-58bfb8e1"]]);export{d as default};

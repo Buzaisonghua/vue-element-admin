@@ -23,6 +23,7 @@ export default defineConfig({
       '@': pathSrc,
     },
   },
+  base: './', // 将根路径换成相对路径
   server: {
     host: '0.0.0.0',
     port: +port,
