@@ -52,7 +52,7 @@ export const useAppStore = defineStore('app', {
     setLanguage(lang: Global.LanguageType) {
       this.language = lang
     },
-    setSize(size) {
+    setSize(size: string) {
       this.size = size
     },
   },

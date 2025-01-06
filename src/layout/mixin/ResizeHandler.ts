@@ -5,9 +5,9 @@ const appStore = useAppStore()
 const { body } = document
 const WIDTH = defaultSettings.sidebarMoblieWidth // refer to Bootstrap's responsive design
 
-export default {
+export default defineComponent({
   watch: {
-    $route(route) {
+    $route() {
       if (appStore.getDevice === 'mobile' && appStore.getSidebarOpened) {
         appStore.setSidebarOpened(true)
       }
@@ -41,4 +41,4 @@ export default {
       }
     },
   },
-}
+})

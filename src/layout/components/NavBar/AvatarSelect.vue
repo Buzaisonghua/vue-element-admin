@@ -12,7 +12,7 @@
       <el-dropdown-menu>
         <router-link to="/">
           <el-dropdown-item>
-            {{ t('route.Dashboard') }}
+            {{ t('route.dashboard') }}
           </el-dropdown-item>
         </router-link>
         <a target="_blank" href="https://github.com/Buzaisonghua/vue-element-admin">

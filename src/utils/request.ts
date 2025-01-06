@@ -59,34 +59,8 @@ service.interceptors.response.use(
     } else {
       return res.data
     }
-
-    // // 如果响应是二进制流，则直接返回，用于下载文件、Excel 导出等
-    // if (response.config.responseType === "blob") {
-    //   return response;
-    // }
-
-    // const { code, data, msg } = response.data;
-    // if (code === ResultEnum.SUCCESS) {
-    //   return data;
-    // }
-
-    // // ElMessage.error(msg || "系统出错");
-    // return Promise.reject(new Error("Error"));
   },
   async (error: any) => {
-    // 非 2xx 状态码处理 401、403、500 等
-    // const { config, response } = error;
-    // if (response) {
-    //   const { code, msg } = response.data;
-    //   if (code === ResultEnum.ACCESS_TOKEN_INVALID) {
-    //     // Token 过期，刷新 Token
-    //     return handleTokenRefresh(config);
-    //   } else if (code === ResultEnum.REFRESH_TOKEN_INVALID) {
-    //     return Promise.reject(new Error(msg || "Error"));
-    //   } else {
-    //     ElMessage.error(msg || "系统出错");
-    //   }
-    // }
     return Promise.reject(error.message)
   },
 )

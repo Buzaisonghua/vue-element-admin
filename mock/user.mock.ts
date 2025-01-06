@@ -2,7 +2,7 @@ import { defineMock } from "./index";
 
 export default defineMock([
   {
-    url: "/api/login",
+    url: "/login",
     method: ["POST"],
     body: ({ body }) => {
       const { username, password } = body
@@ -22,7 +22,7 @@ export default defineMock([
     },
   },
   {
-    url: "/api/getUserInfo",
+    url: "/getUserInfo",
     method: ["POST"],
     body: ({ body }) => {
       const { token } = body
@@ -70,7 +70,7 @@ export default defineMock([
     }
   },
   {
-    url: "/api/getUserRoutes",
+    url: "/getUserRoutes",
     method: ["POST"],
     body: ({ body }) => {
       const { userId } = body

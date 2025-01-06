@@ -22,7 +22,7 @@ function getPermission(router: Router) {
 
   router.beforeEach(async (to, from, next) => {
     NProgress.start()
-    document.title = getPageTitle(to.meta.title)
+    document.title = getPageTitle(to.meta.title as string)
     // 判断是否登录
     const hasLogin = !!getToken()
     if (hasLogin) {

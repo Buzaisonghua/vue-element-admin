@@ -6,7 +6,7 @@ const defaultSettings: Global.AppSettings = {
   language: 'ZH',
   size: 'default',
   themeColor: '#409EFF',
-  sidebarMoblieWidth: 442,
+  sidebarMoblieWidth: 542,
   tagsView: true,
 }
 

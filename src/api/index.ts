@@ -1,2 +1,2 @@
-export const AUTH_BASE_URL = "/api";
+export const AUTH_BASE_URL = "/dev-api";
 

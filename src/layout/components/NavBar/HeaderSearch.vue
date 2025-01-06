@@ -13,7 +13,7 @@
       @change="change"
     >
       <el-option
-        v-for="{ item } in options"
+        v-for="item in options"
         :key="item.name"
         :value="item.name"
         :label="item.title.join(' > ')"
@@ -26,22 +26,21 @@
 interface IOptions {
   name: string
   title: string[]
+  pinyinTitle?: string
 }
 import Fuse from 'fuse.js'
 import { useAppStore, useRoutesStoreHook } from '@/store'
-
-import { cloneDeep } from 'lodash-es'
+import { RouterNamespace } from 'types/router'
 const appStore = useAppStore()
 const routesStore = useRoutesStoreHook()
 const { t } = useI18n()
-const routesStoreHook = useRoutesStoreHook()
 const router = useRouter()
 
-const headerSearchSelectRef = ref<InstanceType>()
+const headerSearchSelectRef = ref()
 const show = ref(false)
 const search = ref('')
-let searchPool: IOptions[] = ref<IOptions[]>([])
-let options: IOptions[] = ref<IOptions[]>([])
+let searchPool = ref<IOptions[]>([])
+let options = ref<IOptions[]>([])
 let fuse: any = ''
 const language = computed(() => appStore.getLanguage)
 const routes = routesStore.getRoutes
@@ -52,12 +51,12 @@ watch(show, async (value) => {
     : document.body.removeEventListener('click', close)
   if (value) {
     if (language.value === 'ZH') {
-      searchPool = await addPinyinField(generateRoutes(routes))
+      searchPool.value = await addPinyinField(generateRoutes(routes))
     } else {
-      searchPool = generateRoutes(routes)
+      searchPool.value = generateRoutes(routes)
     }
     nextTick(() => {
-      initFuse(searchPool)
+      initFuse(searchPool.value)
     })
   }
 })
@@ -72,14 +71,14 @@ const close = () => {
   show.value = false
   headerSearchSelectRef && headerSearchSelectRef.value.blur()
 }
-const querySearch = (query) => {
+const querySearch = (query: string) => {
   if (query !== '') {
     options.value = fuse.search(query)
   } else {
     options.value = []
   }
 }
-const change = (name) => {
+const change = (name: string) => {
   router.push({ name: name })
   search.value = ''
   options.value = []
@@ -87,15 +86,18 @@ const change = (name) => {
     close()
   })
 }
-const generateRoutes = (routes: RouterNamespace.RouteRecord[], prefixTitle = []) => {
-  let res = []
+const generateRoutes = (
+  routes: RouterNamespace.RouteRecord[],
+  prefixTitle: string[] = [],
+): IOptions[] => {
+  let res: IOptions[] = []
   for (const router of routes) {
     // skip hidden router
     if (router.hidden) {
       continue
     }
-    const data = {
-      name: router.name,
+    const data: IOptions = {
+      name: router.name || '   ',
       title: [...prefixTitle],
     }
     if (router.meta && router.meta.title) {
@@ -118,7 +120,7 @@ const generateRoutes = (routes: RouterNamespace.RouteRecord[], prefixTitle = [])
   }
   return res
 }
-const addPinyinField = async (list) => {
+const addPinyinField = async (list: IOptions[]): Promise<IOptions[]> => {
   const { default: pinyin } = await import('pinyin')
   if (Array.isArray(list)) {
     list.forEach((element) => {
@@ -132,16 +134,15 @@ const addPinyinField = async (list) => {
         })
       }
     })
-    return list
   }
+  return list
 }
-const initFuse = (list) => {
+const initFuse = (list: IOptions[]) => {
   fuse = new Fuse(list, {
     shouldSort: true,
     threshold: 0.3,
     location: 0,
     distance: 100,
-    maxPatternLength: 32,
     minMatchCharLength: 1,
     keys: [
       {
