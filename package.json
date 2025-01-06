@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vue-tsc --noEmit & vite --mode dev",
-    "build": "vue-tsc --noEmit & vite build --mode port",
+    "build": "vue-tsc --noEmit & vite build",
     "preview": "vite preview"
   },
   "dependencies": {
