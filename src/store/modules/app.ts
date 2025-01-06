@@ -1,6 +1,6 @@
 import { getStorage, setStorage } from '@/utils/storage'
 import { defineStore } from 'pinia'
-import defaultSettings from '@/settins'
+import defaultSettings from '@/settings'
 import { store } from '@/store'
 import zh from 'element-plus/es/locale/lang/zh-cn'
 import en from 'element-plus/es/locale/lang/en'

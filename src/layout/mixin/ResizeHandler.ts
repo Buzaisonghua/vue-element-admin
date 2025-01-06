@@ -1,5 +1,5 @@
 import { useAppStore } from '@/store/modules/app'
-import defaultSettings from '@/settins'
+import defaultSettings from '@/settings'
 const appStore = useAppStore()
 
 const { body } = document

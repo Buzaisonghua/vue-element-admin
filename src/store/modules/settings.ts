@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import defaultSettings from '@/settins'
+import defaultSettings from '@/settings'
 import { setTheme } from '@/utils/theme'
 
 export const useSettingsStore = defineStore('settings', {

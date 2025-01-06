@@ -1,4 +1,4 @@
-import defaultSettings from '@/settins'
+import defaultSettings from '@/settings'
 import i18n from '@/languages'
 
 const title = defaultSettings.title || 'BZSH'
