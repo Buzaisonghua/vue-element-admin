@@ -1,1 +1,0 @@
-import{bf as s,n as t,q as a}from"./index._VL-sOwE.js";const n={class:"test"};const o=s({},[["render",function(s,o){return t(),a("div",n," root和admin才有的页面 ")}],["__scopeId","data-v-09024442"]]);export{o as default};
