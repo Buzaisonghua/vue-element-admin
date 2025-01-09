@@ -8,7 +8,7 @@
       <div class="login-form">
         <el-form ref="loginFormRef" :model="loginData" :rules="loginRules">
           <div class="form-title">
-            <h2>defaultSettings.title</h2>
+            <h2>{{ defaultSettings.title }}</h2>
             <el-dropdown style="position: absolute; right: 0">
               <div class="cursor-pointer"> 下拉 </div>
               <template #dropdown>
@@ -79,7 +79,7 @@
             size="large"
             class="w-full"
             @click.prevent="handleLoginSubmit"
-            >loginaaars
+            >login
           </el-button>
         </el-form>
       </div>
@@ -96,6 +96,7 @@
 import { login } from '@/api/auth'
 import { setToken } from '@/utils/auth'
 import { ref, computed } from 'vue'
+import defaultSettings from '@/settings'
 const router = useRouter()
 const route = useRoute()
 const loading = ref(false) // 按钮 loading 状态

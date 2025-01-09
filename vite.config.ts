@@ -28,6 +28,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         // 代理 /dev-api 的请求
         [env.VITE_API]: {
           changeOrigin: true,
+          target: env.VITE_API_URL,
         },
       },
     },

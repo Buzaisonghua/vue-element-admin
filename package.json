@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "dev:test": "vue-tsc --noEmit & vite --mode test",
     "dev": "vue-tsc --noEmit & vite --mode dev",
-    "build": "vue-tsc --noEmit & vite build",
+    "build": "vue-tsc --noEmit & vite build --mode prod",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -32,7 +33,6 @@
     "@types/nprogress": "^0.2.3",
     "@types/path-to-regexp": "^1.7.0",
     "@types/pinyin": "^2.10.2",
-    "@types/vue-i18n": "^7.0.0",
     "@typescript-eslint/eslint-plugin": "^8.18.2",
     "@typescript-eslint/parser": "^8.18.2",
     "@vitejs/plugin-vue": "^5.2.1",
@@ -43,7 +43,6 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.32.0",
     "fast-glob": "^3.3.2",
-    "node-sass": "^9.0.0",
     "prettier": "^3.4.2",
     "sass-embedded": "^1.81.0",
     "sass-loader": "^16.0.3",
@@ -54,7 +53,7 @@
     "unplugin-element-plus": "^0.8.0",
     "unplugin-vue-components": "^0.27.5",
     "vite": "^6.0.1",
-    "vite-plugin-mock-dev-server": "^1.8.0",
+    "vite-plugin-mock-dev-server": "^1.8.3",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-hooks-plus": "^2.2.1",
     "vue-tsc": "^2.1.10"

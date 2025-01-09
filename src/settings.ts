@@ -2,7 +2,7 @@
 const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)')
 
 const defaultSettings: Global.AppSettings = {
-  title: 'BZSH',
+  title: 'VUE - BZSH',
   language: 'ZH',
   size: 'default',
   themeColor: '#409EFF',

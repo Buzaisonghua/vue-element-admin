@@ -5,6 +5,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { useRoutesStoreHook, useUserStoreHook } from '@/store'
 import routeWhiteList from './routeWhiteList'
+import Cookies from 'js-cookie'
 function getPermission(router: Router) {
   // 进度条
   NProgress.configure({
@@ -25,6 +26,7 @@ function getPermission(router: Router) {
     document.title = getPageTitle(to.meta.title as string)
     // 判断是否登录
     const hasLogin = !!getToken()
+    console.log('111111111111l', Cookies.get('Admin-Token'))
     if (hasLogin) {
       if (to.path === '/login') {
         next({ path: '/' })

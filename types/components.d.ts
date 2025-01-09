@@ -10,7 +10,6 @@ declare module 'vue' {
     AvatarSelect: typeof import('./../src/layout/components/NavBar/AvatarSelect.vue')['default']
     Breadcrumb: typeof import('./../src/layout/components/NavBar/Breadcrumb.vue')['default']
     DarkBtn: typeof import('./../src/layout/components/NavBar/DarkBtn.vue')['default']
-    ElAlert: typeof import('element-plus/es')['ElAlert']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']

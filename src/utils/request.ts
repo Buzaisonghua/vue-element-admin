@@ -1,20 +1,23 @@
 import axios, { type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
 import { getToken, removeToken } from './auth'
 import { ElMessage } from 'element-plus'
+import 'element-plus/dist/index.css' // 引入 Element Plus 样式
 
 // 创建 axios 实例
 const service = axios.create({
-  baseURL: '/',
-  timeout: 50000,
+  baseURL: import.meta.env.VITE_API,
+  timeout: 2000,
 })
 
 const ResultEnum = {
   /**成功*/
-  SUCCESS: '200',
+  SUCCESS: '20000',
   /**错误*/
-  ERROR: '500',
+  ERROR: '50000',
+  /** 账号或密码错误 */
+  ACCOUNTWARN: '50001',
   /**访问令牌无效或过期*/
-  ACCESS_TOKEN_INVALID: 'A0230',
+  TOKEN_INVALID: 'A0230',
   /**刷新令牌无效或过期 */
   REFRESH_TOKEN_INVALID: 'A0231',
 }
@@ -40,7 +43,7 @@ service.interceptors.response.use(
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== ResultEnum.SUCCESS) {
       // 登录过期
-      if (res.code === ResultEnum.ACCESS_TOKEN_INVALID) {
+      if (res.code === ResultEnum.TOKEN_INVALID) {
         ElMessageBox.alert('登录过期，重新登录', '提示', {
           type: 'warning',
           showCancelButton: false,
@@ -49,12 +52,12 @@ service.interceptors.response.use(
           removeToken()
           location.reload()
         })
+      } else {
+        ElMessage({
+          message: res.msg || 'Error',
+          type: 'warning',
+        })
       }
-      ElMessage({
-        message: res.msg || 'Error',
-        type: 'warning',
-        duration: 5 * 1000,
-      })
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
       return res.data

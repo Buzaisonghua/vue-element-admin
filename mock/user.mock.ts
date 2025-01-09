@@ -7,28 +7,28 @@ export default defineMock([
     body: ({ body }) => {
       const { username, password } = body
       if (username === 'root' && password === '123456') {
-        return {code: "200", data: { accessToken:"A1",}}
+        return {code: "20000", data: { accessToken:"A1",}}
       }
       if (username === 'admin' && password === '123456') {
-        return {code: "200", data: { accessToken:"A2",}}
+        return {code: "20000", data: { accessToken:"A2",}}
       }
       if (username === 'test' && password === '123456') {
-        return {code: "200", data: { accessToken:"A3",}}
+        return {code: "20000", data: { accessToken:"A3",}}
       }
       return {
-        code: 50001,
+        code: '50001',
         msg: '账号或密码错误'
       }
     },
   },
   {
     url: "/getUserInfo",
-    method: ["POST"],
+    method: ["GET"],
     body: ({ body }) => {
       const { token } = body
       if ( token === 'A1' ) {
         return {
-          code: "200",
+          code: "20000",
           data: {
             userId: 1,
             username: "root",
@@ -40,7 +40,7 @@ export default defineMock([
       }
       if ( token === 'A2' ) {
         return {
-          code: "200",
+          code: "20000",
           data: {
             userId: 2,
             username: "admin",
@@ -50,9 +50,9 @@ export default defineMock([
           }
         }
       }
-      // if ( token === 'A3' ) {
+      if ( token === 'A3' ) {
         return {
-          code: "200",
+          code: "20000",
           data: {
             userId: 3,
             username: "test",
@@ -61,11 +61,9 @@ export default defineMock([
               "https://foruda.gitee.com/images/1723603502796844527/03cdca2a_716974.gif",
           }
         }
-      // }
+      }
       return {
-        code: "A0230",
-        data: {
-        }
+        code: "A0230"
       }
     }
   },
@@ -75,17 +73,17 @@ export default defineMock([
     body: ({ body }) => {
       const { userId } = body
       if (userId === 1) {
-        return {code: "200", data: { 
+        return {code: "2000", data: { 
           routesList: ['Root', 'Admin', 'Test']
         }}
       }
       if (userId === 2) {
-        return {code: "200", data: { 
+        return {code: "2000", data: { 
           routesList: ['Admin', 'Test']
         }}
       }
       if (userId === 3) {
-        return {code: "200", data: {
+        return {code: "2000", data: {
           routesList: ['Test']
         }}
       }
