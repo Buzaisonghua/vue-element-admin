@@ -6,6 +6,7 @@
 
 [vue-element-admin](https://github.com/Buzaisonghua/vue-element-admin) 是一个后台前端解决方案，它基于 [vue](https://github.com/vuejs/vue) 和 [element-plus](https://github.com/element-plus/element-plus)实现。它使用了最新的前端技术栈，内置了 i18n 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
 
+- [预览地址](https://buzaisonghua.github.io/vue-element-admin)
 - 换肤（暗夜模式）
 - 主题色
 - 国际化
@@ -108,7 +109,7 @@ pnpm i
 npm run dev
 ```
 
-浏览器访问 http://localhost:9527
+浏览器访问
 
 ## 发布
 
