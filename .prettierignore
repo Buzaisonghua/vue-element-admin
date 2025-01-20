@@ -10,3 +10,4 @@ iconfont
 .eslintrc-auto-import.json
 auto-imports.d.ts
 components.d.ts
+stylelint.config.js

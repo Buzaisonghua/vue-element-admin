@@ -42,9 +42,9 @@ watch(
 }
 
 .theme-picker .el-color-picker__trigger {
-  height: 26px !important;
-  width: 26px !important;
   padding: 2px;
+  width: 26px !important;
+  height: 26px !important;
 }
 
 .theme-picker-dropdown .el-color-dropdown__link-btn {

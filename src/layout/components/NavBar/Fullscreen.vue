@@ -41,10 +41,10 @@ onUnmounted(() => {
 
 <style scoped>
 .drop-title {
-  height: 100%;
-  padding: 0 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 8px;
+  height: 100%;
 }
 </style>

@@ -8,7 +8,9 @@
       <SettingsItem :title="t('settings.dark')">
         <el-switch
           v-model="isDark"
-          style="--el-switch-on-color: #f2f2f2; --el-switch-off-color: #2c2c2c"
+          style="
+
+--el-switch-on-color: #f2f2f2; --el-switch-off-color: #2c2c2c"
           @change="changeDark"
         >
           <template #inactive-action><svg-icon icon-class="sunny" /></template>

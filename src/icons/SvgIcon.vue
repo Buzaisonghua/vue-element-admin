@@ -41,16 +41,16 @@ const styleExternalIcon = computed(() => ({
 
 <style scoped>
 .svg-icon {
+  overflow: hidden;
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
+  fill: currentcolor;
 }
 
 .svg-external-icon {
-  background-color: currentColor;
-  mask-size: cover !important;
   display: inline-block;
+  background-color: currentcolor;
+  mask-size: cover !important;
 }
 </style>
