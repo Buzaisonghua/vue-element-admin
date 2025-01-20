@@ -1,0 +1,1 @@
+import{bf as e,n as t,q as n,ae as s}from"./index.SOX6oSsD.js";import{E as a}from"./el-alert.tk7NG_wi.js";const o={style:{padding:"30px"}};const r=e({},[["render",function(e,r){const i=a;return t(),n("div",o,[s(i,{closable:!1,title:"menu 1-2-2",type:"warning"})])}]]);export{r as default};

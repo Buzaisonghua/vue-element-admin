@@ -1,0 +1,1 @@
+import{l as s,r as e,n,A as o,w as t,c2 as a}from"./index.SOX6oSsD.js";import{I as m}from"./Icons.BXdYYG01.js";import"./el-popper.BzUkYjqE.js";/* empty css                   */const r=s({__name:"elementIcons",setup(s){const r=e(Object.keys(a));return(s,e)=>(n(),o(m,{icons:t(r),type:"element"},null,8,["icons"]))}});export{r as default};
