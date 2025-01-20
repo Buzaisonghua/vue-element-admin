@@ -13,7 +13,7 @@ export function hexToRgb(str: any) {
 
   hexs = str.match(/../g)
 
-  for (let i = 0; i < 3; i++) hexs[i] = parseInt(hexs[i], 16)
+  for (let i = 0; i < 3; i++) hexs[i] = Number.parseInt(hexs[i], 16)
   return hexs
 }
 
@@ -69,10 +69,7 @@ export function getLightColor(color: string, level: number) {
 }
 
 export function setTheme(color: string, isDark: boolean) {
-  document.documentElement.style.setProperty(
-    '--el-color-primary',
-    color,
-  )
+  document.documentElement.style.setProperty('--el-color-primary', color)
 
   // 颜色加深或变浅
   for (let i = 1; i <= 9; i++) {
@@ -80,7 +77,7 @@ export function setTheme(color: string, isDark: boolean) {
       `--el-color-primary-light-${i}`,
       isDark
         ? `${getDarkColor(color, i / 10)}`
-        : `${getLightColor(color, i / 10)}`,
+        : `${getLightColor(color, i / 10)}`
     )
   }
 }

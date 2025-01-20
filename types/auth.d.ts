@@ -14,7 +14,7 @@ declare namespace Auth {
     password: string
   }
   interface AutoLoginRes {
-    accessToken: String
+    accessToken: string
   }
 
   interface UserInfo {

@@ -15,7 +15,7 @@ const click = () => {
   if (!screenfull.isEnabled) {
     ElMessage({
       message: t('message.screenfullEnabled'),
-      type: 'warning',
+      type: 'warning'
     })
     return
   }

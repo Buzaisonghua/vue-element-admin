@@ -1,5 +1,9 @@
 <template>
-  <div ref="rightPanel" :class="{ 'show-right-panel': show }" class="rightPanel-container">
+  <div
+    ref="rightPanel"
+    :class="{ 'show-right-panel': show }"
+    class="rightPanel-container"
+  >
     <div class="rightPanel">
       <div class="handle-button" @click="handleBtnClick">
         <template v-if="$slots.icon">
@@ -13,7 +17,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-let show = ref(false)
+const show = ref(false)
 const handleBtnClick = () => {
   show.value = !show.value
 }

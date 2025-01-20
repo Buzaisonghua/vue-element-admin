@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
 const props = defineProps({
-  color: String,
+  color: String
 })
 const theme = ref(props.color)
 const emit = defineEmits(['updateColor'])
@@ -22,7 +22,7 @@ const colors = [
   '#11a983',
   '#13c2c2',
   '#6959CD',
-  '#f5222d',
+  '#f5222d'
 ]
 watch(
   theme,
@@ -30,7 +30,7 @@ watch(
     emit('updateColor', newValue)
   },
   {
-    immediate: true,
+    immediate: true
   }
 )
 </script>

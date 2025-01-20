@@ -1,6 +1,10 @@
 <template>
-  <div class="tags-view-container" v-if="show">
-    <scroll-pane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
+  <div v-if="show" class="tags-view-container">
+    <scroll-pane
+      ref="scrollPane"
+      class="tags-view-wrapper"
+      @scroll="handleScroll"
+    >
       <router-link
         v-for="tag in visitedViews"
         ref="tag"
@@ -11,7 +15,11 @@
         class="tags-view-item"
       >
         {{ t(`route.${tag.title}`) }}
-        <span class="delete-container" v-if="!tag.detail" @click.prevent.stop="deleteTag(tag)">
+        <span
+          v-if="!tag.detail"
+          class="delete-container"
+          @click.prevent.stop="deleteTag(tag)"
+        >
           <svg-icon class="delete-icon" icon-class="times" />
         </span>
       </router-link>
@@ -19,10 +27,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useSettingsStore, useRoutesStoreHook } from '@/store'
-import useTagsStore from '@/store/modules/tags'
-import { RouterNamespace } from 'types/router'
 import { useRouter } from 'vue-router'
+import type { RouterNamespace } from 'types/router'
+import { useRoutesStoreHook, useSettingsStore } from '@/store'
+import useTagsStore from '@/store/modules/tags'
 const settingsStore = useSettingsStore()
 
 const show = computed(() => settingsStore.getTagsView)
@@ -37,12 +45,12 @@ const addTags = (route: Obj) => {
   const {
     name,
     path,
-    meta: { title },
+    meta: { title }
   } = route
   tagsStore.addVisitedViews({
     name,
     path,
-    title,
+    title
   })
 }
 
@@ -51,7 +59,7 @@ watch(
   () => route.path, // 监听路由的路径变化
   () => {
     addTags(route)
-  },
+  }
 )
 
 onBeforeMount(() => {
@@ -61,7 +69,10 @@ onBeforeMount(() => {
 
 const handleScroll = () => {}
 
-const filterAffixTags = (routes: RouterNamespace.RouteRecord[], basePath = '/') => {
+const filterAffixTags = (
+  routes: RouterNamespace.RouteRecord[],
+  basePath = '/'
+) => {
   let tags: Array<TagsType.Tags> = []
   routes.forEach((route) => {
     if (route.affix) {
@@ -70,7 +81,7 @@ const filterAffixTags = (routes: RouterNamespace.RouteRecord[], basePath = '/') 
         path: tagPath,
         name: route.name || '',
         title: route.meta?.title || '',
-        detail: true,
+        detail: true
       })
     }
     if (route.children) {
@@ -115,9 +126,7 @@ const toLastView = () => {
 .tags-view-container {
   height: 34px;
   width: 100%;
-  box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.12),
-    0 0 3px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
   .tags-view-item {
     display: inline-block;
     position: relative;

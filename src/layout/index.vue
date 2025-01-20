@@ -6,16 +6,20 @@
       'is-desktop': !isMobile,
       'sidebar-open': sidebar,
       'sidebar-close': !sidebar,
-      'withoutAnimation': withoutAnimation,
+      withoutAnimation: withoutAnimation
     }"
   >
-    <div v-if="device === 'mobile' && sidebar" class="drawer-bg" @click="handleClickOutside" />
+    <div
+      v-if="device === 'mobile' && sidebar"
+      class="drawer-bg"
+      @click="handleClickOutside"
+    />
     <div class="layout-sidebar">
       <Sidebar />
     </div>
     <section class="layout-center">
       <header class="layout-header">
-        <NavBar :isMobile="isMobile" />
+        <NavBar :is-mobile="isMobile" />
         <TagsView />
       </header>
       <div class="center-box">
@@ -43,7 +47,7 @@ const isMobile = computed(() => appStore.getDevice === 'mobile')
 const withoutAnimation = computed(() => appStore.withoutAnimation)
 
 defineOptions({
-  mixins: [ResizeMixin],
+  mixins: [ResizeMixin]
 })
 const handleClickOutside = () => {
   appStore.setSidebarOpened()

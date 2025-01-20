@@ -11,7 +11,7 @@ export const constantRoutes: RouterNamespace.RouteRecord[] = [
     path: '/login',
     name: 'Login',
     hidden: true,
-    component: () => import('@/views/login/index.vue'),
+    component: () => import('@/views/login/index.vue')
   },
   {
     path: '/',
@@ -27,10 +27,10 @@ export const constantRoutes: RouterNamespace.RouteRecord[] = [
         affix: true,
         meta: {
           title: 'dashboard',
-          icon: 'smile-fill',
-        },
-      },
-    ],
+          icon: 'smile-fill'
+        }
+      }
+    ]
   },
   {
     path: '/document',
@@ -43,9 +43,9 @@ export const constantRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/documnet/index.vue'),
         meta: {
           title: 'document',
-          icon: 'document',
-        },
-      },
-    ],
-  },
+          icon: 'document'
+        }
+      }
+    ]
+  }
 ]

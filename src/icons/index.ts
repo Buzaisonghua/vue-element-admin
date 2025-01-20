@@ -1,6 +1,6 @@
-import type { App } from 'vue'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import SvgIcon from './SvgIcon.vue'
+import type { App } from 'vue'
 
 // 注册所有图标
 export function setupElIcons(app: App<Element>) {

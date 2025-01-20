@@ -1,9 +1,9 @@
-import { getStorage, setStorage } from '@/utils/storage'
 import { defineStore } from 'pinia'
-import defaultSettings from '@/settings'
-import { store } from '@/store'
 import zh from 'element-plus/es/locale/lang/zh-cn'
 import en from 'element-plus/es/locale/lang/en'
+import { getStorage, setStorage } from '@/utils/storage'
+import defaultSettings from '@/settings'
+import { store } from '@/store'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
@@ -14,7 +14,7 @@ export const useAppStore = defineStore('app', {
     withoutAnimation: true,
     // 语言文字
     language: defaultSettings.language,
-    size: defaultSettings.size,
+    size: defaultSettings.size
   }),
   getters: {
     getSidebarOpened: (state) => state.sidebarOpened,
@@ -29,7 +29,7 @@ export const useAppStore = defineStore('app', {
           return zh
       }
     },
-    getSize: (state) => state.size,
+    getSize: (state) => state.size
   },
   actions: {
     setSidebarOpened(close?: boolean) {
@@ -54,8 +54,8 @@ export const useAppStore = defineStore('app', {
     },
     setSize(size: string) {
       this.size = size
-    },
-  },
+    }
+  }
 })
 export default useAppStore
 

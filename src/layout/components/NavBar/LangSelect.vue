@@ -1,5 +1,9 @@
 <template>
-  <el-dropdown trigger="click" class="international" @command="handleSetLanguage">
+  <el-dropdown
+    trigger="click"
+    class="international"
+    @command="handleSetLanguage"
+  >
     <div class="drop-title">
       <svg-icon class-name="international-icon" icon-class="language" />
     </div>
@@ -7,9 +11,9 @@
       <el-dropdown-menu>
         <el-dropdown-item
           v-for="(key, value) in LanguageEnum"
+          :key="value"
           :disabled="language === value"
           :command="value"
-          :key="value"
         >
           {{ key }}
         </el-dropdown-item>
@@ -22,12 +26,12 @@
 const { locale, t } = useI18n()
 enum LanguageEnum {
   ZH = '中文',
-  EN = 'English',
+  EN = 'English'
 }
 defineProps({
   language: {
-    type: String,
-  },
+    type: String
+  }
 })
 const emit = defineEmits(['change'])
 
@@ -36,7 +40,7 @@ const handleSetLanguage = (lang: Global.LanguageType) => {
   emit('change', lang)
   ElMessage({
     message: t('message.changeLanguageMsg'),
-    type: 'success',
+    type: 'success'
   })
 }
 </script>

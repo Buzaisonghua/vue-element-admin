@@ -10,7 +10,7 @@
           <div class="form-title">
             <h2>{{ defaultSettings.title }}</h2>
             <el-dropdown style="position: absolute; right: 0">
-              <div class="cursor-pointer"> 下拉 </div>
+              <div class="cursor-pointer">下拉</div>
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item>
@@ -20,13 +20,19 @@
                     </el-tag>
                   </el-dropdown-item>
 
-                  <el-dropdown-item @click="setLoginCredentials('root', '123456')">
+                  <el-dropdown-item
+                    @click="setLoginCredentials('root', '123456')"
+                  >
                     超级管理员：root/123456
                   </el-dropdown-item>
-                  <el-dropdown-item @click="setLoginCredentials('admin', '123456')">
+                  <el-dropdown-item
+                    @click="setLoginCredentials('admin', '123456')"
+                  >
                     系统管理员：admin/123456
                   </el-dropdown-item>
-                  <el-dropdown-item @click="setLoginCredentials('test', '123456')">
+                  <el-dropdown-item
+                    @click="setLoginCredentials('test', '123456')"
+                  >
                     测试小游客：test/123456
                   </el-dropdown-item>
                 </el-dropdown-menu>
@@ -51,7 +57,11 @@
           </el-form-item>
 
           <!-- 密码 -->
-          <el-tooltip :visible="isCapslock" content="login.capsLock" placement="right">
+          <el-tooltip
+            :visible="isCapslock"
+            content="login.capsLock"
+            placement="right"
+          >
             <el-form-item prop="password">
               <div class="input-wrapper">
                 <el-icon class="mx-2">
@@ -93,19 +103,21 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import { login } from '@/api/auth'
 import { setToken } from '@/utils/auth'
-import { ref, computed } from 'vue'
 import defaultSettings from '@/settings'
 const router = useRouter()
 const route = useRoute()
 const loading = ref(false) // 按钮 loading 状态
 const isCapslock = ref(false) // 是否大写锁定
-const loginImage = ref(new URL('../../assets/images/login-image.svg', import.meta.url).href)
+const loginImage = ref(
+  new URL('../../assets/images/login-image.svg', import.meta.url).href
+)
 
 const loginData = ref<Auth.LoginData>({
   username: 'admin',
-  password: '123456',
+  password: '123456'
 })
 
 const loginRules = computed(() => {
@@ -114,21 +126,21 @@ const loginRules = computed(() => {
       {
         required: true,
         trigger: 'blur',
-        message: 'login.message.username.required',
-      },
+        message: 'login.message.username.required'
+      }
     ],
     password: [
       {
         required: true,
         trigger: 'blur',
-        message: 'login.message.password.required',
+        message: 'login.message.password.required'
       },
       {
         min: 6,
         message: 'login.message.password.min',
-        trigger: 'blur',
-      },
-    ],
+        trigger: 'blur'
+      }
+    ]
   }
 })
 
@@ -136,7 +148,7 @@ const loginRules = computed(() => {
 async function handleLoginSubmit() {
   login({
     username: loginData.value.username,
-    password: loginData.value.password,
+    password: loginData.value.password
   }).then((res) => {
     setToken(res.accessToken)
     router.push(route.query.redirect ? (route.query.redirect as string) : '/')
@@ -166,7 +178,8 @@ const setLoginCredentials = (username: string, password: string) => {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  background: url('@/assets/images/login-background-light.jpg') no-repeat center right;
+  background: url('@/assets/images/login-background-light.jpg') no-repeat center
+    right;
 
   .login-content {
     display: flex;

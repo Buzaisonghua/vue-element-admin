@@ -1,19 +1,18 @@
 {
-  "cSpell.words": ["Element Plus", "element-plus", "vnode"],
+  "cSpell.words": ["BZSH UI", "bzsh-ui", "vnode"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.formatOnSave": true,
+  "stylelint.validate": ["css", "less", "vue", "html"],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
   "npm.packageManager": "pnpm",
   "eslint.probe": [
-    "javascript",
-    "javascriptreact",
     "typescript",
     "typescriptreact",
     "html",
     "vue",
-    "markdown",
     "json",
     "jsonc"
   ],
@@ -42,6 +41,8 @@
   "explorer.fileNesting.patterns": {
     "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml",
     "tsconfig.json": "tsconfig.*.json",
-    "vitest.config.mts": "vitest.setup.ts, vitest.workspace.ts"
+    "vitest.config.mts": "vitest.setup.ts, vitest.workspace.ts",
+    ".eslintrc.json": ".eslintcache, .eslintignore",
+    ".gitignore": ".gitattributes"
   }
 }

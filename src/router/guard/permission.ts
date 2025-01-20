@@ -1,7 +1,11 @@
-import type { NavigationGuardNext, RouteLocationNormalized, Router } from 'vue-router'
+import NProgress from 'nprogress'
+import type {
+  NavigationGuardNext,
+  RouteLocationNormalized,
+  Router
+} from 'vue-router'
 import getPageTitle from '@/utils/getPageTitle'
 import { getToken } from '@/utils/auth'
-import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { useRoutesStoreHook, useUserStoreHook } from '@/store'
 import routeWhiteList from './routeWhiteList'
@@ -18,7 +22,7 @@ function getPermission(router: Router) {
     // 自动递增间隔
     trickleSpeed: 200,
     // 初始化时的最小百分比
-    minimum: 0.3,
+    minimum: 0.3
   })
 
   router.beforeEach(async (to, from, next) => {
@@ -35,7 +39,7 @@ function getPermission(router: Router) {
         next()
       }
     } else {
-      if (routeWhiteList.indexOf(to.path) !== -1) {
+      if (routeWhiteList.includes(to.path)) {
         next()
       } else {
         // other pages that do not have permission to access are redirected to the login page.

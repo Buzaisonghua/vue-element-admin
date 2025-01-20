@@ -14,16 +14,16 @@
 </template>
 
 <script lang="ts" setup>
-import { useAppStore } from '@/store'
-import { useRoutesStoreHook } from '@/store/modules/routes'
 import { computed } from 'vue'
 import SidebarItem from './SidebarItem.vue'
+import { useAppStore } from '@/store'
+import { useRoutesStoreHook } from '@/store/modules/routes'
 const route = useRoute()
 const active = computed(() => route.name)
 
 const appStore = useAppStore()
 const isCollapse = computed(() =>
-  appStore.getDevice === 'mobile' ? true : appStore.getSidebarOpened,
+  appStore.getDevice === 'mobile' ? true : appStore.getSidebarOpened
 )
 const routesStore = useRoutesStoreHook()
 const routes = routesStore.getRoutes

@@ -12,13 +12,21 @@
         <div class="right-menu-item hover-effect">
           <Fullscreen />
         </div>
-        <el-tooltip :content="t('navbar.size')" effect="dark" placement="bottom">
-          <SizeSelect :size="size" @change="changeSize" class="right-menu-item hover-effect" />
+        <el-tooltip
+          :content="t('navbar.size')"
+          effect="dark"
+          placement="bottom"
+        >
+          <SizeSelect
+            :size="size"
+            class="right-menu-item hover-effect"
+            @change="changeSize"
+          />
         </el-tooltip>
         <LangSelect
           :language="language"
-          @change="changeLanguage"
           class="right-menu-item hover-effect"
+          @change="changeLanguage"
         />
         <div class="right-menu-item hover-effect">
           <DarkBtn />
@@ -49,8 +57,8 @@ const language = computed(() => appStore.getLanguage)
 defineProps({
   isMobile: {
     type: Boolean,
-    default: () => false,
-  },
+    default: () => false
+  }
 })
 
 const sidebarClick = () => {

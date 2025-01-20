@@ -11,12 +11,12 @@ export default defineComponent({
       if (appStore.getDevice === 'mobile' && appStore.getSidebarOpened) {
         appStore.setSidebarOpened(true)
       }
-    },
+    }
   },
   beforeMount() {
     window.addEventListener('resize', this.$_resizeHandler)
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener('resize', this.$_resizeHandler)
   },
   mounted() {
@@ -39,6 +39,6 @@ export default defineComponent({
           appStore.setSidebarOpened(true)
         }
       }
-    },
-  },
+    }
+  }
 })

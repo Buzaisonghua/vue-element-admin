@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue'
 defineProps({
-  sidebar: { type: Boolean },
+  sidebar: { type: Boolean }
 })
 const emit = defineEmits<{
   click: []

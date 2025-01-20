@@ -1,6 +1,10 @@
 <template>
   <div :class="{ show: show }" class="header-search">
-    <svg-icon class-name="search-icon" icon-class="search" @click.stop="click" />
+    <svg-icon
+      class-name="search-icon"
+      icon-class="search"
+      @click.stop="click"
+    />
     <el-select
       ref="headerSearchSelectRef"
       v-model="search"
@@ -23,14 +27,14 @@
 </template>
 
 <script lang="ts" setup>
+import Fuse from 'fuse.js'
+import type { RouterNamespace } from 'types/router'
+import { useAppStore, useRoutesStoreHook } from '@/store'
 interface IOptions {
   name: string
   title: string[]
   pinyinTitle?: string
 }
-import Fuse from 'fuse.js'
-import { useAppStore, useRoutesStoreHook } from '@/store'
-import { RouterNamespace } from 'types/router'
 const appStore = useAppStore()
 const routesStore = useRoutesStoreHook()
 const { t } = useI18n()
@@ -39,8 +43,8 @@ const router = useRouter()
 const headerSearchSelectRef = ref()
 const show = ref(false)
 const search = ref('')
-let searchPool = ref<IOptions[]>([])
-let options = ref<IOptions[]>([])
+const searchPool = ref<IOptions[]>([])
+const options = ref<IOptions[]>([])
 let fuse: any = ''
 const language = computed(() => appStore.getLanguage)
 const routes = routesStore.getRoutes
@@ -79,7 +83,7 @@ const querySearch = (query: string) => {
   }
 }
 const change = (name: string) => {
-  router.push({ name: name })
+  router.push({ name })
   search.value = ''
   options.value = []
   nextTick(() => {
@@ -88,7 +92,7 @@ const change = (name: string) => {
 }
 const generateRoutes = (
   routes: RouterNamespace.RouteRecord[],
-  prefixTitle: string[] = [],
+  prefixTitle: string[] = []
 ): IOptions[] => {
   let res: IOptions[] = []
   for (const router of routes) {
@@ -98,7 +102,7 @@ const generateRoutes = (
     }
     const data: IOptions = {
       name: router.name || '   ',
-      title: [...prefixTitle],
+      title: [...prefixTitle]
     }
     if (router.meta && router.meta.title) {
       // generate internationalized title
@@ -128,7 +132,7 @@ const addPinyinField = async (list: IOptions[]): Promise<IOptions[]> => {
       if (Array.isArray(title)) {
         title.forEach((v) => {
           v = pinyin(v, {
-            style: pinyin.STYLE_NORMAL,
+            style: pinyin.STYLE_NORMAL
           }).join('')
           element.pinyinTitle = v
         })
@@ -147,17 +151,17 @@ const initFuse = (list: IOptions[]) => {
     keys: [
       {
         name: 'pinyinTitle',
-        weight: 0.6,
+        weight: 0.6
       },
       {
         name: 'title',
-        weight: 0.5,
+        weight: 0.5
       },
       {
         name: 'path',
-        weight: 0.4,
-      },
-    ],
+        weight: 0.4
+      }
+    ]
   })
 }
 </script>

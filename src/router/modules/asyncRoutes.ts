@@ -21,10 +21,10 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/charts/index.vue'),
         meta: {
           title: 'charts',
-          icon: 'chart-area',
-        },
-      },
-    ],
+          icon: 'chart-area'
+        }
+      }
+    ]
   },
   {
     path: '/icons',
@@ -33,7 +33,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
     component: Layout,
     meta: {
       title: 'icons',
-      icon: 'icon-demo',
+      icon: 'icon-demo'
     },
     children: [
       {
@@ -42,8 +42,8 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/iconsView/myIcons.vue'),
         meta: {
           title: 'myIcons',
-          icon: 'my-icons',
-        },
+          icon: 'my-icons'
+        }
       },
       {
         path: 'element',
@@ -51,10 +51,10 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/iconsView/elementIcons.vue'),
         meta: {
           title: 'elementIcons',
-          icon: 'element-icons',
-        },
-      },
-    ],
+          icon: 'element-icons'
+        }
+      }
+    ]
   },
   {
     path: '/authority',
@@ -63,7 +63,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
     component: Layout,
     meta: {
       title: 'authority',
-      icon: 'gem',
+      icon: 'gem'
     },
     children: [
       {
@@ -73,8 +73,8 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         role: true,
         meta: {
           title: 'test',
-          icon: 'user-fill',
-        },
+          icon: 'user-fill'
+        }
       },
       {
         path: 'admin',
@@ -82,8 +82,8 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         component: () => import('@/views/authority/admin/index.vue'),
         role: true,
         meta: {
-          title: 'admin',
-        },
+          title: 'admin'
+        }
       },
       {
         path: 'root',
@@ -91,10 +91,10 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
         role: true,
         component: () => import('@/views/authority/root/index.vue'),
         meta: {
-          title: 'root',
-        },
-      },
-    ],
+          title: 'root'
+        }
+      }
+    ]
   },
   {
     path: '/menu',
@@ -103,7 +103,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
     name: 'Menu',
     meta: {
       title: 'menu',
-      icon: 'layer group-fill',
+      icon: 'layer group-fill'
     },
     children: [
       {
@@ -117,7 +117,7 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
             path: 'menu1-1',
             component: () => import('@/views/menu/menu1/menu1-1/index.vue'),
             name: 'Menu1-1',
-            meta: { title: 'menu1-1' },
+            meta: { title: 'menu1-1' }
           },
           {
             path: 'menu1-2',
@@ -128,32 +128,34 @@ export const asyncRoutes: RouterNamespace.RouteRecord[] = [
             children: [
               {
                 path: 'menu1-2-1',
-                component: () => import('@/views/menu/menu1/menu1-2/menu1-2-1/index.vue'),
+                component: () =>
+                  import('@/views/menu/menu1/menu1-2/menu1-2-1/index.vue'),
                 name: 'Menu1-2-1',
-                meta: { title: 'menu1-2-1' },
+                meta: { title: 'menu1-2-1' }
               },
               {
                 path: 'menu1-2-2',
-                component: () => import('@/views/menu/menu1/menu1-2/menu1-2-2/index.vue'),
+                component: () =>
+                  import('@/views/menu/menu1/menu1-2/menu1-2-2/index.vue'),
                 name: 'Menu1-2-2',
-                meta: { title: 'menu1-2-2' },
-              },
-            ],
+                meta: { title: 'menu1-2-2' }
+              }
+            ]
           },
           {
             path: 'menu1-3',
             component: () => import('@/views/menu/menu1/menu1-3/index.vue'),
             name: 'Menu1-3',
-            meta: { title: 'menu1-3' },
-          },
-        ],
+            meta: { title: 'menu1-3' }
+          }
+        ]
       },
       {
         path: 'menu2',
         name: 'Menu2',
         component: () => import('@/views/menu/menu2/index.vue'),
-        meta: { title: 'menu2' },
-      },
-    ],
-  },
+        meta: { title: 'menu2' }
+      }
+    ]
+  }
 ]

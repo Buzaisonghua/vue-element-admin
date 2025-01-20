@@ -1,4 +1,7 @@
-import { debounce as debounceLodash, throttle as throttleLodash } from 'lodash-es'
+import {
+  debounce as debounceLodash,
+  throttle as throttleLodash
+} from 'lodash-es'
 
 /**
  * 复制方法
@@ -25,14 +28,20 @@ export function copy(text: string, msg?: string) {
 export function getAlert(text = '', type: AlertType = 'success') {
   ElMessage({
     message: text ? text : type,
-    type: type,
+    type
   })
 }
 
-export function debounce<T extends (...args: any) => any>(func: T, wait: number | undefined) {
+export function debounce<T extends (...args: any) => any>(
+  func: T,
+  wait: number | undefined
+) {
   return debounceLodash(func, wait)
 }
 
-export function throttle<T extends (...args: any) => any>(func: T, wait: number | undefined) {
+export function throttle<T extends (...args: any) => any>(
+  func: T,
+  wait: number | undefined
+) {
   return throttleLodash(func, wait)
 }

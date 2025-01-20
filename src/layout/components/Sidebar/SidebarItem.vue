@@ -5,11 +5,19 @@
         <template #title>
           <Item :icon="meta?.icon" :title="meta?.title" />
         </template>
-        <sidebar-item v-for="child in props.route?.children" :key="child.path" :route="child" />
+        <sidebar-item
+          v-for="child in props.route?.children"
+          :key="child.path"
+          :route="child"
+        />
       </el-sub-menu>
     </template>
     <template v-else-if="showChild">
-      <sidebar-item v-for="child in props.route?.children" :key="child.path" :route="child" />
+      <sidebar-item
+        v-for="child in props.route?.children"
+        :key="child.path"
+        :route="child"
+      />
     </template>
     <template v-else>
       <el-menu-item :index="name" @click="clickMenuItem">
@@ -20,18 +28,18 @@
 </template>
 <script lang="ts" setup>
 import Item from './Item.vue'
-import { RouterNamespace } from 'types/router'
+import type { RouterNamespace } from 'types/router'
 import { useRoutesStoreHook } from '@/store/modules/routes'
 const routesStoreHook = useRoutesStoreHook()
 const router = useRouter()
 defineOptions({
-  name: 'SidebarItem',
+  name: 'SidebarItem'
 })
 
 const props = defineProps({
   route: {
-    type: Object as PropType<RouterNamespace.RouteRecord>,
-  },
+    type: Object as PropType<RouterNamespace.RouteRecord>
+  }
 })
 const { path, hidden, name, meta, role, showChild, children } =
   props.route as RouterNamespace.RouteRecord

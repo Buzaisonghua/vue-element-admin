@@ -8,17 +8,21 @@
       <SettingsItem :title="t('settings.dark')">
         <el-switch
           v-model="isDark"
-          @change="changeDark"
           style="--el-switch-on-color: #f2f2f2; --el-switch-off-color: #2c2c2c"
+          @change="changeDark"
         >
           <template #inactive-action><svg-icon icon-class="sunny" /></template>
-          <template #active-action><svg-icon class="on-svg" icon-class="moon" /></template>
+          <template #active-action
+            ><svg-icon class="on-svg" icon-class="moon"
+          /></template>
         </el-switch>
       </SettingsItem>
       <SettingsItem :title="t('settings.theme')">
-        <theme-picker :color="themeColor" @updateColor="updateColor" />
+        <theme-picker :color="themeColor" @update-color="updateColor" />
       </SettingsItem>
-      <el-divider content-position="center">{{ t('settings.interface') }}</el-divider>
+      <el-divider content-position="center">{{
+        t('settings.interface')
+      }}</el-divider>
       <SettingsItem :title="t('settings.tagsView')">
         <el-switch v-model="tagsView" @change="changeTagsView" />
       </SettingsItem>

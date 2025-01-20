@@ -3,8 +3,8 @@
     <div class="grid">
       <div v-for="item in icons" :key="item">
         <el-tooltip
-          placement="top"
           ref="tooltipRef"
+          placement="top"
           tigger="contextmenu"
           :content="svgText(item)"
           :disabled="show"
@@ -25,12 +25,12 @@ import { copy, throttle } from '@/utils'
 const { t } = useI18n()
 const props = defineProps({
   icons: {
-    type: Array as PropType<string[]>,
+    type: Array as PropType<string[]>
   },
   type: {
     type: String,
-    default: () => 'my',
-  },
+    default: () => 'my'
+  }
 })
 const tooltipRef = ref()
 const show = ref(false)
@@ -45,7 +45,9 @@ const scrollIcons = throttle(() => {
 }, 500)
 
 const svgText = (item: string) =>
-  props.type === 'my' ? `<svg-icon icon-class="${item}" />` : `<el-icon><${item} /></el-icon>`
+  props.type === 'my'
+    ? `<svg-icon icon-class="${item}" />`
+    : `<el-icon><${item} /></el-icon>`
 const clickIconItem = (item: string) => {
   copy(item, t('message.copyIconMsgSuccess'))
 }

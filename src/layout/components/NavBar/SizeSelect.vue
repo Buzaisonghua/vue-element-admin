@@ -7,9 +7,9 @@
       <el-dropdown-menu>
         <el-dropdown-item
           v-for="(key, value) in LanguageEnum"
+          :key="value"
           :disabled="size === value"
           :command="value"
-          :key="value"
         >
           {{ key }}
         </el-dropdown-item>
@@ -21,14 +21,14 @@
 <script lang="ts" setup>
 defineProps({
   size: {
-    type: String,
-  },
+    type: String
+  }
 })
 const emit = defineEmits(['change'])
 enum LanguageEnum {
   large = 'large',
   default = 'default',
-  small = 'small',
+  small = 'small'
 }
 
 const handleSetSize = (size: string) => {

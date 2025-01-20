@@ -1,12 +1,15 @@
-import axios, { type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
-import { getToken, removeToken } from './auth'
+import axios, {
+  type AxiosResponse,
+  type InternalAxiosRequestConfig
+} from 'axios'
 import { ElMessage } from 'element-plus'
+import { getToken, removeToken } from './auth'
 import 'element-plus/dist/index.css' // 引入 Element Plus 样式
 
 // 创建 axios 实例
 const service = axios.create({
   baseURL: import.meta.env.VITE_API,
-  timeout: 2000,
+  timeout: 2000
 })
 
 const ResultEnum = {
@@ -19,7 +22,7 @@ const ResultEnum = {
   /**访问令牌无效或过期*/
   TOKEN_INVALID: 'A0230',
   /**刷新令牌无效或过期 */
-  REFRESH_TOKEN_INVALID: 'A0231',
+  REFRESH_TOKEN_INVALID: 'A0231'
 }
 
 // 请求拦截器
@@ -34,7 +37,7 @@ service.interceptors.request.use(
     }
     return config
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 )
 // 响应拦截器
 service.interceptors.response.use(
@@ -47,7 +50,7 @@ service.interceptors.response.use(
         ElMessageBox.alert('登录过期，重新登录', '提示', {
           type: 'warning',
           showCancelButton: false,
-          confirmButtonText: '重新登录',
+          confirmButtonText: '重新登录'
         }).then(() => {
           removeToken()
           location.reload()
@@ -55,7 +58,7 @@ service.interceptors.response.use(
       } else {
         ElMessage({
           message: res.msg || 'Error',
-          type: 'warning',
+          type: 'warning'
         })
       }
       return Promise.reject(new Error(res.message || 'Error'))
@@ -65,7 +68,7 @@ service.interceptors.response.use(
   },
   async (error: any) => {
     return Promise.reject(error.message)
-  },
+  }
 )
 
 export default service

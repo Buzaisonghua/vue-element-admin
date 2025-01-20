@@ -4,10 +4,10 @@ export const useTagsStore = defineStore('tags', {
   state: (): {
     visitedViews: TagsType.Tags[]
   } => ({
-    visitedViews: [],
+    visitedViews: []
   }),
   getters: {
-    getVisitedViews: (state) => state.visitedViews,
+    getVisitedViews: (state) => state.visitedViews
   },
   actions: {
     addVisitedViews(route: TagsType.Tags) {
@@ -15,9 +15,11 @@ export const useTagsStore = defineStore('tags', {
       this.visitedViews.push(route)
     },
     deleteVisitedViews(tag: TagsType.Tags) {
-      this.visitedViews = this.visitedViews.filter((val) => val.name !== tag.name)
-    },
-  },
+      this.visitedViews = this.visitedViews.filter(
+        (val) => val.name !== tag.name
+      )
+    }
+  }
 })
 
 export default useTagsStore

@@ -1,5 +1,5 @@
-import { getInfo } from '@/api/auth'
 import { defineStore } from 'pinia'
+import { getInfo } from '@/api/auth'
 import { getToken, removeToken } from '@/utils/auth'
 
 export const useUserStore = defineStore('user', {
@@ -7,14 +7,14 @@ export const useUserStore = defineStore('user', {
     userId: '',
     username: '',
     nickname: '',
-    avatar: '',
+    avatar: ''
   }),
   getters: {
     getToken: () => getToken,
     getUsername: (state) => state.username,
     getNickName: (state) => state.nickname,
     getAvatar: (state) => state.avatar,
-    getUserId: (state) => state.userId,
+    getUserId: (state) => state.userId
   },
   actions: {
     /** 设置用户id */
@@ -36,7 +36,9 @@ export const useUserStore = defineStore('user', {
     async setUserInfo(refresh: boolean = false) {
       if (!this.userId || refresh) {
         const token = getToken()
-        const { userId, username, nickname, avatar } = await getInfo(token as string)
+        const { userId, username, nickname, avatar } = await getInfo(
+          token as string
+        )
         this.setUserId(userId)
         this.setNickname(nickname)
         this.setUsername(username)
@@ -46,8 +48,8 @@ export const useUserStore = defineStore('user', {
 
     setLogout() {
       removeToken()
-    },
-  },
+    }
+  }
 })
 
 export const useUserStoreHook = () => {

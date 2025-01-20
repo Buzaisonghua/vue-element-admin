@@ -16,6 +16,6 @@ export const getInfo = (token: string):Promise<Auth.UserInfo> => {
   return request({
     url: `/getUserInfo`,
     method: "get",
-    params: {token: token}
+    params: {token}
   });
 }

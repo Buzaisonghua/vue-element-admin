@@ -15,7 +15,10 @@
             {{ t('route.dashboard') }}
           </el-dropdown-item>
         </router-link>
-        <a target="_blank" href="https://github.com/Buzaisonghua/vue-element-admin">
+        <a
+          target="_blank"
+          href="https://github.com/Buzaisonghua/vue-element-admin"
+        >
           <el-dropdown-item>
             {{ t('navbar.github') }}
           </el-dropdown-item>
@@ -29,7 +32,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
 import { useUserStore } from '@/store'
 const userStore = useUserStore()
 const router = useRouter()

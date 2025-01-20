@@ -3,17 +3,16 @@
   <span>{{ t(`route.${props.title}`) }}</span>
 </template>
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const props = defineProps({
   icon: {
     type: String,
-    default: () => '',     
+    default: () => ''
   },
 
   title: {
     type: String,
-    default: () => '默认名称',
-  },
+    default: () => '默认名称'
+  }
 })
 </script>

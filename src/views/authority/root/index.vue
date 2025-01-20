@@ -1,3 +1,1 @@
-<template>
-    root才有的路由
-</template>
+<template>root才有的路由</template>

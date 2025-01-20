@@ -1,6 +1,6 @@
 <template>
   <div class="dark-btn" @click="taggleDark">
-    <svg-icon :icon-class="isDark ?  'moon' : 'sunny'" />
+    <svg-icon :icon-class="isDark ? 'moon' : 'sunny'" />
   </div>
 </template>
 

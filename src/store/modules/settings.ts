@@ -5,11 +5,11 @@ import { setTheme } from '@/utils/theme'
 export const useSettingsStore = defineStore('settings', {
   state: () => ({
     themeColor: defaultSettings.themeColor,
-    tagsView: defaultSettings.tagsView,
+    tagsView: defaultSettings.tagsView
   }),
   getters: {
     getThemeColor: (state) => state.themeColor,
-    getTagsView: (state) => state.tagsView,
+    getTagsView: (state) => state.tagsView
   },
   actions: {
     setDark() {
@@ -22,8 +22,8 @@ export const useSettingsStore = defineStore('settings', {
     },
     setTagsView(tagsView: boolean) {
       this.tagsView = tagsView
-    },
-  },
+    }
+  }
 })
 
 export default useSettingsStore
