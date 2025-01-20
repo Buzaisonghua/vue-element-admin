@@ -3,3 +3,4 @@ dist
 pnpm-lock.yaml
 types/components.d.ts
 types/auto-imports.d.ts
+mock

@@ -61,8 +61,9 @@ service.interceptors.response.use(
           type: 'warning'
         })
       }
-      return Promise.reject(new Error(res.message || 'Error'))
+      return Promise.reject(new Error(res || 'Error'))
     } else {
+      console.log(res.data)
       return res.data
     }
   },

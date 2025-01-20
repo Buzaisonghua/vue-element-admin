@@ -24,8 +24,8 @@ export default defineMock([
   {
     url: "/getUserInfo",
     method: ["GET"],
-    body: ({ body }) => {
-      const { token } = body
+    body: ({query}) => {
+      const { token } = query
       if ( token === 'A1' ) {
         return {
           code: "20000",
@@ -50,20 +50,15 @@ export default defineMock([
           }
         }
       }
-      if ( token === 'A3' ) {
-        return {
-          code: "20000",
-          data: {
-            userId: 3,
-            username: "test",
-            nickname: "游客",
-            avatar:
-              "https://foruda.gitee.com/images/1723603502796844527/03cdca2a_716974.gif",
-          }
-        }
-      }
       return {
-        code: "A0230"
+        code: "20000",
+        data: {
+          userId: 3,
+          username: "test",
+          nickname: "游客",
+          avatar:
+            "https://foruda.gitee.com/images/1723603502796844527/03cdca2a_716974.gif",
+        }
       }
     }
   },
@@ -73,17 +68,17 @@ export default defineMock([
     body: ({ body }) => {
       const { userId } = body
       if (userId === 1) {
-        return {code: "2000", data: { 
+        return {code: "20000", data: { 
           routesList: ['Root', 'Admin', 'Test']
         }}
       }
       if (userId === 2) {
-        return {code: "2000", data: { 
+        return {code: "20000", data: { 
           routesList: ['Admin', 'Test']
         }}
       }
       if (userId === 3) {
-        return {code: "2000", data: {
+        return {code: "20000", data: {
           routesList: ['Test']
         }}
       }
