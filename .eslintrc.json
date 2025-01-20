@@ -15,7 +15,7 @@
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "settings": {
+  "settings": { 
     "import/resolver": {
       "node": { "extensions": [".js", ".mjs", ".ts", ".d.ts", ".tsx"] }
     }
@@ -213,7 +213,7 @@
     ],
 
     // prettier
-    "prettier/prettier": "error",
+    "prettier/prettier": "off",
 
     // import
     "import/first": "error",

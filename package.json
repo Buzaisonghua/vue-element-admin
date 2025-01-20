@@ -11,6 +11,7 @@
     "lint": "eslint . --max-warnings 0 --cache",
     "lint:fix": "pnpm run lint --fix",
     "lint:style": "stylelint \"./**/*.{css,less,vue,html}\" --fix",
+    "cz": "czg",
     "prepare": "husky"
   },
   "dependencies": {
