@@ -1,15 +1,10 @@
 import NProgress from 'nprogress'
-import type {
-  NavigationGuardNext,
-  RouteLocationNormalized,
-  Router
-} from 'vue-router'
+import routeWhiteList from './routeWhiteList'
+import type { Router } from 'vue-router'
 import getPageTitle from '@/utils/getPageTitle'
 import { getToken } from '@/utils/auth'
 import 'nprogress/nprogress.css'
 import { useRoutesStoreHook, useUserStoreHook } from '@/store'
-import routeWhiteList from './routeWhiteList'
-import Cookies from 'js-cookie'
 function getPermission(router: Router) {
   // 进度条
   NProgress.configure({
@@ -30,7 +25,6 @@ function getPermission(router: Router) {
     document.title = getPageTitle(to.meta.title as string)
     // 判断是否登录
     const hasLogin = !!getToken()
-    console.log('111111111111l', Cookies.get('Admin-Token'))
     if (hasLogin) {
       if (to.path === '/login') {
         next({ path: '/' })

@@ -1,11 +1,9 @@
 import { defineStore } from 'pinia'
 import { RouterNamespace } from 'types/router'
-import { RouteRecordRaw, useRoute } from 'vue-router'
 import { getUserRoutes } from '@/api/routes'
 import { store } from '@/store'
 import { constantRoutes } from '@/router/modules/constantRoutes'
 import { asyncRoutes } from '@/router/modules/asyncRoutes'
-import { router } from '@/router'
 
 const useRoutesStore = defineStore('routes', {
   state: (): {

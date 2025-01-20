@@ -11,7 +11,6 @@
         :key="tag.path"
         :class="isActive(tag.name) ? 'active' : ''"
         :to="{ name: tag.name }"
-        tag="span"
         class="tags-view-item"
       >
         {{ t(`route.${tag.title}`) }}

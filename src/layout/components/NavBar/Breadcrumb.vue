@@ -65,12 +65,12 @@ function isDashboard(route: RouteLocationMatched) {
 function handleLink(item: any) {
   const { redirect, path } = item
   if (redirect) {
-    router.push(redirect).catch((err) => {
+    router.push(redirect).catch(() => {
       // console.warn(err)
     })
     return
   }
-  router.push(pathCompile(path)).catch((err) => {
+  router.push(pathCompile(path)).catch(() => {
     // console.warn(err)
   })
 }

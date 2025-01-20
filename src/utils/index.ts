@@ -1,7 +1,7 @@
 import {
   debounce as debounceLodash,
   throttle as throttleLodash
-} from 'lodash-es'
+} from 'lodash-unified'
 
 /**
  * 复制方法
@@ -13,7 +13,7 @@ export function copy(text: string, msg?: string) {
   return new Promise((resolve, reject) => {
     navigator.clipboard
       .writeText(text)
-      .then((res) => {
+      .then(() => {
         getAlert(msg ? msg : '复制成功')
         resolve('')
       })
