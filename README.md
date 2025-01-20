@@ -12,8 +12,11 @@
 - 国际化
 - 动态路由
 - 导航搜索
-- 内置icons组件
-- 使用mock数据
+- 内置 icons 组件
+- 使用 mock 数据
+- eslint + prettier 验证格式
+- stylelint 验证 style
+- git-cz 验证 git commmit
 
 **该项目不支持低版本浏览器(如 ie)，有需求请自行添加 polyfill [详情](https://github.com/PanJiaChen/vue-element-admin/wiki#babel-polyfill)**
 
